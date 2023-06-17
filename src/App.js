@@ -9,18 +9,18 @@ import {SignUp} from "./pages/signup/signup";
 import './App.css';
 import './base.css';
 
-import { useAuth } from './contexts/auth-context';
-import { useData } from './contexts/data-context';
+// import { useAuth } from './contexts/auth-context';
+// import { useData } from './contexts/data-context';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   
-  const { loader } = useData();
+  // const { loader } = useData();
   return (
     <div className="App">
-        {loader && <Loader />}
+        {/* {loader && <Loader />}
       <ToastContainer
         position='bottom-right'
         autoClose={false}
@@ -30,7 +30,7 @@ function App() {
         rtl={false}
         pauseOnFocusLoss
         draggable
-      />
+      /> */}
        <Routes>
           <Route path="/" element={<LandingPage/>}  />
           <Route path="/login" element={ <Login/>}  />

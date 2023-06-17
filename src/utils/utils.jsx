@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import { Plane } from 'react-loader-spinner';
+import { ThreeDots } from 'react-loader-spinner';
 
 import "./utils.css";
  export const ToastHandler = (type, message) => {
@@ -47,7 +47,7 @@ import "./utils.css";
 export const Loader = () => {
   return (
     <div className='loader'>
-      <Plane color={'var(--primary-color)'} />
+      <ThreeDots color={'var(--primary-color)'} />
     </div>
   );
 };
