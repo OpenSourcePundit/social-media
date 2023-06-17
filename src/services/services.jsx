@@ -4,12 +4,11 @@ export const LoginService = async ({ username, password }) =>
   axios.post("/api/auth/login", { username, password });
 
 export const SignUpService = async ({
-  firstName,
-  lastName,
+  name,
   username,
   password,
 }) =>
-  axios.post("/api/auth/signup", { firstName, lastName, username, password });
+  axios.post("/api/auth/signup", { name, username, password });
 
 //Post Controller
 

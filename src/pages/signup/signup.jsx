@@ -1,5 +1,7 @@
 import React from "react";
 import "./../../base.css";
+
+
 import "./../../utility.css";
 
 export function SignUp(){
@@ -11,6 +13,8 @@ export function SignUp(){
       </h2>
       <div className="white-bg br-m p-xxl pt-l pb-l" style={{ width: '30rem' }}>
         <h3 className="txt-center mb-s txt-l">Signup</h3>
+
+      <form action="">
         <div className="flex flex-column">
           <label htmlFor="name" className="txt-s">Full Name</label>
           <input
@@ -72,6 +76,7 @@ export function SignUp(){
         <button className="w-full primary-bg white-color p-s outline-transparent border-none pt-xs pb-xs txt-s">
           Create New Account
         </button>
+     </form>
         <a className="txt-center w-full mt-m" style={{ display: 'block' }}>
           Already have an account &gt;
         </a>

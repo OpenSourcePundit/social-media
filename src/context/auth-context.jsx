@@ -37,7 +37,24 @@ const AuthProvider = ({children}) =>{
         setToken(null);
         setCurrUser(null);
       };
-      const signupHandler = async (email, password, name) => {
+      const signupHandler = async (username, password, name) => {
+        try {
+          const {
+            data: { createdUser, encodedToken },
+            status,
+          } = await SignUpService({ username, password, name });
+          if (status === 200 || status === 201) {
+            localStorage.setItem(
+              'loginItems',
+              JSON.stringify({ token: encodedToken, user: createdUser })
+            );
+            setCurrUser(createdUser);
+            setToken(encodedToken);
+            ToastHandler(ToastType.Success, 'Successfully signed Up');
+          } 
+        } catch (err) {
+          console.log(err);
+        }
       };
 
 
