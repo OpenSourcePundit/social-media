@@ -1,10 +1,19 @@
 import React from "react";
 import "./../../base.css";
-
-
 import "./../../utility.css";
+import {useNavigate} from 'react-router-dom'
+
+import {useForm} from 'react-hook-form';
 
 export function SignUp(){
+  const navigate = useNavigate();
+  const form = useForm();
+  const{register,handleSubmit,control} = form;
+
+  const submitHandler = (data) =>{
+    console.log(data);
+
+  }
 
     return(
       <div className="flex flex-column flex-center h-full w-full">
@@ -14,15 +23,16 @@ export function SignUp(){
       <div className="white-bg br-m p-xxl pt-l pb-l" style={{ width: '30rem' }}>
         <h3 className="txt-center mb-s txt-l">Signup</h3>
 
-      <form action="">
+      <form onSubmit={handleSubmit(submitHandler)}>
         <div className="flex flex-column">
           <label htmlFor="name" className="txt-s">Full Name</label>
           <input
             type="text"
             name="name"
+            id="name"
             className="p-xs txt-s lynx-white-color br-s mb-s"
             style={{ border: '1px solid grey' }}
-            placeholder="Tanay Pratap"
+            placeholder="Name" {...register("name")}
           />
         </div>
         <div className="flex flex-column">
@@ -30,9 +40,10 @@ export function SignUp(){
           <input
             type="text"
             name="username"
+            id="username"
             className="p-xs txt-s lynx-white-color br-s mb-s"
             style={{ border: '1px solid grey' }}
-            placeholder="tanaypratap"
+            placeholder="Username" {...register("username")}
           />
         </div>
         <div className="flex flex-column">
@@ -40,9 +51,10 @@ export function SignUp(){
           <input
             type="text"
             name="email"
-            className="p-xs txt-s lynx-white-color br-s mb-s"
+            id="email"
+            className="p-xs txt-s black-color br-s mb-s"
             style={{ border: '1px solid grey' }}
-            placeholder="tanay@neog.camp"
+            placeholder="shashank@neog.camp" {...register("email")}
           />
         </div>
         <div className="flex flex-column">
@@ -50,9 +62,10 @@ export function SignUp(){
           <input
             type="password"
             name="password"
-            className="p-xs txt-s lynx-white-color br-s flex mb-s items-center"
+            id="password"
+            className="p-xs txt-s black-color br-s flex mb-s items-center"
             style={{ border: '1px solid grey' }}
-            placeholder="************"
+            placeholder="************" {...register("password")}
           />
         </div>
         <div className="flex flex-column">
@@ -60,9 +73,10 @@ export function SignUp(){
           <input
             type="password"
             name="confirm-password"
-            className="p-xs txt-s lynx-white-color br-s flex items-center"
+            id="confirm-password"
+            className="p-xs txt-s black-color br-s flex items-center"
             style={{ border: '1px solid grey' }}
-            placeholder="************"
+            placeholder="************" {...register("confirm-password")}
           />
         </div>
         <div className="flex flex-align-center flex-space-between mt-m mb-m">
@@ -73,13 +87,13 @@ export function SignUp(){
             </label>
           </div>
         </div>
-        <button className="w-full primary-bg white-color p-s outline-transparent border-none pt-xs pb-xs txt-s">
+        <button onClick={()=>handleSubmit(submitHandler)} className="w-full primary-bg white-color p-s outline-transparent border-none pt-xs pb-xs txt-s">
           Create New Account
         </button>
      </form>
-        <a className="txt-center w-full mt-m" style={{ display: 'block' }}>
-          Already have an account &gt;
-        </a>
+        <p className="txt-center w-full mt-m" style={{ display: 'block' }}onClick={()=>navigate("/login")}>
+          Already have an account ?
+        </p>
       </div>
     </div>
     )
