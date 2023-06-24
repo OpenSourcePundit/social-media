@@ -1,12 +1,14 @@
 import React from "react";
 import "./../../base.css";
 import "./../../utility.css";
-import "./landingpage.css"
+
+import {useNavigate} from 'react-router-dom'
 
 
 
 
 export function LandingPage() {
+  const navigate = useNavigate();
   return (
     <div className="flex flex-row flex-center h-full w-full" style={{ gap: '10rem' }}>
       <div className="flex flex-column flex-space-between" style={{ height: '70vh', width: '25rem' }}>
@@ -23,8 +25,8 @@ export function LandingPage() {
           </h2>
         </div>
         <div>
-          <button className="primary-bg w-full p-s secondary-color border-none outline-none txt-s">Join Now</button>
-          <p className="primary-color txt-s txt-center mt-xs">Already have an account?</p>
+          <button className="primary-bg w-full p-s secondary-color border-none outline-none txt-s" onClick={()=>navigate("/signup")}>Join Now</button>
+          <p className="primary-color txt-s txt-center mt-xs" style={{cursor:"pointer"}} onClick={()=>navigate("/login")}>Already have an account?</p>
         </div>
       </div>
       <div className="grey-bg" style={{ height: '70vh', width: '30rem' }}></div>

@@ -8,7 +8,8 @@ import {useForm} from 'react-hook-form';
 export function SignUp(){
   const navigate = useNavigate();
   const form = useForm();
-  const{register,handleSubmit,control} = form;
+  const{register,handleSubmit,watch,formState} = form;
+  const {errors} = formState;
 
   const submitHandler = (data) =>{
     console.log(data);
@@ -23,17 +24,18 @@ export function SignUp(){
       <div className="white-bg br-m p-xxl pt-l pb-l" style={{ width: '30rem' }}>
         <h3 className="txt-center mb-s txt-l">Signup</h3>
 
-      <form onSubmit={handleSubmit(submitHandler)}>
+      <form onSubmit={handleSubmit(submitHandler)} noValidate>
         <div className="flex flex-column">
           <label htmlFor="name" className="txt-s">Full Name</label>
           <input
             type="text"
             name="name"
             id="name"
-            className="p-xs txt-s lynx-white-color br-s mb-s"
+            className="p-xs txt-s black-color br-s mb-s"
             style={{ border: '1px solid grey' }}
-            placeholder="Name" {...register("name")}
+            placeholder="Name" {...register("name",{required:{value:true,message:"Name is Required"}})}
           />
+          <p className="error-msg">{errors.name?.message}</p>
         </div>
         <div className="flex flex-column">
           <label htmlFor="username">Username</label>
@@ -41,10 +43,11 @@ export function SignUp(){
             type="text"
             name="username"
             id="username"
-            className="p-xs txt-s lynx-white-color br-s mb-s"
+            className="p-xs txt-s black-color br-s mb-s"
             style={{ border: '1px solid grey' }}
-            placeholder="Username" {...register("username")}
+            placeholder="Username" {...register("username",{required:{value:true,message:"Username is Required"}})}
           />
+           <p className="error-msg">{errors.username?.message}</p>
         </div>
         <div className="flex flex-column">
           <label htmlFor="email">Email Address</label>
@@ -54,8 +57,12 @@ export function SignUp(){
             id="email"
             className="p-xs txt-s black-color br-s mb-s"
             style={{ border: '1px solid grey' }}
-            placeholder="shashank@neog.camp" {...register("email")}
+            placeholder="shashank@neog.camp" {...register("email",{pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: "invalid email address"
+            }})}
           />
+           <p className="error-msg">{errors.email?.message}</p>
         </div>
         <div className="flex flex-column">
           <label htmlFor="password">Password</label>
@@ -67,17 +74,22 @@ export function SignUp(){
             style={{ border: '1px solid grey' }}
             placeholder="************" {...register("password")}
           />
+           <p className="error-msg">{errors.password?.message}</p>
         </div>
         <div className="flex flex-column">
-          <label htmlFor="confirm-password">Confirm Password</label>
+          <label htmlFor="confirmpassword">Confirm Password</label>
           <input
             type="password"
-            name="confirm-password"
-            id="confirm-password"
-            className="p-xs txt-s black-color br-s flex items-center"
+            name="confirmpassword"
+            id="confirmpassword"
+            className="p-xs txt-s black-color br-s mb-s flex items-center"
             style={{ border: '1px solid grey' }}
-            placeholder="************" {...register("confirm-password")}
+            placeholder="************" {...register("confirmpassword",  { 
+              required: true,
+              validate: (value) => value === watch("password") || "Passwords do not match"
+            })}
           />
+           <p className="error-msg">{errors.confirmpassword?.message}</p>
         </div>
         <div className="flex flex-align-center flex-space-between mt-m mb-m">
           <div className="txt-s flex flex-align-center">
@@ -87,11 +99,11 @@ export function SignUp(){
             </label>
           </div>
         </div>
-        <button onClick={()=>handleSubmit(submitHandler)} className="w-full primary-bg white-color p-s outline-transparent border-none pt-xs pb-xs txt-s">
+        <button type="submit" className="w-full primary-bg white-color p-s outline-transparent border-none pt-xs pb-xs txt-s">
           Create New Account
         </button>
      </form>
-        <p className="txt-center w-full mt-m" style={{ display: 'block' }}onClick={()=>navigate("/login")}>
+        <p className="txt-center w-full mt-m" style={{ display: 'block',cursor:"pointer" }}onClick={()=>navigate("/login")}>
           Already have an account ?
         </p>
       </div>

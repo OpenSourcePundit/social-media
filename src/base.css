@@ -48,7 +48,7 @@ body {
     color: var(--black-color);
 }
 
-a {
+Link {
     color:inherit;
     text-decoration: none;
 }

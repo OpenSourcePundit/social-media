@@ -1,4 +1,5 @@
 @import url(base.css);
+@import url(layout.css);
 /* calculation: 1rem: 16px */
 
 /* for headings */
@@ -28,6 +29,14 @@ h6 {
 }
 
 /* for text */
+.error-msg{
+  color:red;
+  font-size: small;
+  margin-top: -1rem;
+  padding-top: 0;
+  text-align: left;
+
+}
 .txt-xl {
   font-size: var(--xl-font);
   line-height: var(--xxl-size);
