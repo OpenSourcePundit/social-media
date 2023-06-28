@@ -1,39 +1,47 @@
-import React from "react";
+import {React} from "react";
 import {useNavigate} from 'react-router-dom'
 import {useForm} from 'react-hook-form';
 import "./../../base.css";
 import "./../../utility.css";
+import {useAuth} from "../../context/auth-context";
 
 export function Login(){
-   const navigate = useNavigate();
-  const form = useForm();
-  const{register,handleSubmit,watch,formState} = form;
-  const {errors} = formState;
-  const loginHandler = (data) =>{
-    console.log(data);
+   const {loginHandler} = useAuth();
 
-  }
+   const navigate = useNavigate();
+   const form = useForm();
+   const{register,handleSubmit,watch,formState} = form;
+   const {errors} = formState;
+
+   const onSubmitHandler = ({username, password}) =>{
+    loginHandler(username,password);
+   } 
+   
+  
 
     return(
         <div className="flex flex-column flex-center h-full w-full">
-      <h2 className="fw-black txt-xl mb-m">
+      <h2 className="fw-black txt-xl mb-m gen-btn" onClick={()=>{navigate("/")}}>
         <span className="primary-color">My</span> Website
       </h2>
       <div className="white-bg br-m p-xxl pt-xl pb-xl" style={{ width: '30rem' }}>
         <h3 className="txt-center mb-m txt-l">Login</h3>
-    <form onSubmit={handleSubmit(loginHandler)} noValidate>
+    <form onSubmit={handleSubmit(onSubmitHandler)} noValidate>
         <div className="flex flex-column">
-          <label htmlFor="email">Email Address</label>
+          <label htmlFor="username">UserName</label>
           <input
             type="text"
-            name="email"
-            id="email"
+            name="username"
+            id="username"
             className="p-xs txt-s black-color br-s mb-s"
             style={{ border: '1px solid grey' }}
-            placeholder="tanay@neog.camp" {...register("email",{pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: "invalid email address"
-            }})}
+            placeholder="tanay-neog" 
+            {...register("username"
+            // ,{pattern: {
+            //   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+            //   message: "invalid email address"
+            // }}
+            )}
           />
           <p className="error-msg">{errors.email?.message}</p>
         </div>

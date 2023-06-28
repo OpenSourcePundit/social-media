@@ -2,6 +2,7 @@ import React from "react";
 import "./../../base.css";
 import "./../../utility.css";
 import {useNavigate} from 'react-router-dom'
+import { useAuth } from "../../context/auth-context";
 
 import {useForm} from 'react-hook-form';
 
@@ -10,15 +11,16 @@ export function SignUp(){
   const form = useForm();
   const{register,handleSubmit,watch,formState} = form;
   const {errors} = formState;
+  const {signupHandler} = useAuth();
 
-  const submitHandler = (data) =>{
-    console.log(data);
-
+  const submitHandler = ({name, username, password,email}) =>{
+    console.log("email",email,"name",name,"username",username,"password",password);
+    signupHandler(name, username, password,email);
   }
 
     return(
       <div className="flex flex-column flex-center h-full w-full">
-      <h2 className="fw-black mb-m">
+      <h2 className="fw-black mb-m gen-btn " onClick={()=>{navigate("/")}}>
         <span className="primary-color">My</span> Website
       </h2>
       <div className="white-bg br-m p-xxl pt-l pb-l" style={{ width: '30rem' }}>

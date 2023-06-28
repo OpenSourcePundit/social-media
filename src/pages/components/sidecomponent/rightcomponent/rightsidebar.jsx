@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 export const RightSideBar = () =>{
 
     return(
-        <aside2 className=" sidebar sidebar2 mt-xl mr-xxl">      
+        <div className=" sidebar sidebar2 mt-xl mr-xxl">      
         <div className="white-bg mb-m pl-s border flex flex-row flex-center nowrap">
           <i className="bi bi-search"></i>
           <input type="search" name="search-bar" className="search-bar border-none outline-transparent p-s width-16" placeholder="Search Posts, People, Anything" />
@@ -72,7 +72,7 @@ export const RightSideBar = () =>{
             </div>
           </div>
         </div>
-      </aside2>
+      </div>
     )
 }
 

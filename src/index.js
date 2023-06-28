@@ -6,18 +6,22 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { makeServer } from "./server";
 import 'bootstrap';
+import { AuthProvider} from './context/auth-context';
+import { DataProvider } from './context/data-context';
 // import 'bootstrap/dist/css/bootstrap.css';
 // import 'bootstrap/dist/js/bootstrap.js';
 import $ from 'jquery';
 import Popper from 'popper.js';
 
-
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Router>
-    <App />
+      <AuthProvider>
+        <DataProvider>
+           <App />
+        </DataProvider>
+      </AuthProvider>
     </Router>
   </React.StrictMode>
 );

@@ -5,7 +5,7 @@ export const LeftSideBar = () =>{
 
 
     return(
-        <aside1 className="p-s  pl-xl flex flex-column  sidebar">
+        <div className="p-s  pl-xl flex flex-column  sidebar sidebar1">
           <div className="flex flex-column flex-space-between nav-wrapper">
             <div className="pt-s black-color fw-semibold link-wrap">
               <Link className="link" to="../home">                
@@ -45,6 +45,6 @@ export const LeftSideBar = () =>{
         </div>
         <div className="grey-color fw-bold">...</div>          
       </div>
-      </aside1>
+      </div>
     )
 }

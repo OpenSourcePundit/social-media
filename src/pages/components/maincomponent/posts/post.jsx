@@ -20,12 +20,12 @@ export const Post = () =>{
                   </p>
                 </div>
                 <p className="post-edit-section">
-                  <i class="bi bi-pencil-square"></i>
+                  <i className="bi bi-pencil-square"></i>
                 </p>
               </div>
               <p className="pr-s pt-xs post-main-section">
                 Non programmers on my timeline. Attention. After placing 100+
-                programmers i in top Indian startups, I am thinking of coming up
+                programmers in top Indian startups, I am thinking of coming up
                 with a program for business roles as well. Interested in helping
                 me build this course? Join the telegram group (in next tweet)
               </p>

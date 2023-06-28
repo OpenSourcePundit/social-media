@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { createContext, useContext, useState } from 'react';
 import { ToastType } from '../utils/constants';
 import { LoginService,SignUpService } from '../services/services';
@@ -13,36 +12,36 @@ const AuthProvider = ({children}) =>{
     const [token, setToken] = useState(localStorageToken?.token);
     const [currUser, setCurrUser] = useState(localStorageToken?.user);
 
-    const loginHandler = async (email, password) => {
-        try {
-          const {
-            data: { foundUser, encodedToken },
-            status,
-          } = await LoginService({ email, password });
-          if (status === 200 || status === 201) {
-            localStorage.setItem(
-              'loginItems',
-              JSON.stringify({ token: encodedToken, user: foundUser })
-            );
+    const loginHandler = async (username, password) => {
+      try{
+        const {data: {foundUser , encodedToken},status} = await LoginService({username,password});
+          if(status === 200 ){
+            localStorage.setItem('loginItems',JSON.stringify({token:encodedToken,user:foundUser}));
             setCurrUser(foundUser);
             setToken(encodedToken);
-            ToastHandler(ToastType.Success, 'Successfully logged in');
+            ToastHandler(ToastType.Success, "Login Successful !");
+
           }
-        } catch (err) {
+        }
+      catch (err) {
           console.log(err);
+          ToastHandler(ToastType.Error, `${err.response.data.errors}`);
+
         }
       };
       const logoutHandler = () => {
+        ToastHandler(ToastType.Success, "Logged Out Successfully !");
         localStorage.removeItem('loginItems');
         setToken(null);
         setCurrUser(null);
       };
-      const signupHandler = async (username, password, name) => {
+      const signupHandler = async (name, username, password,email) => {
+        console.log("fromemail",email,"name",name,"username",username,"password",password);
         try {
           const {
             data: { createdUser, encodedToken },
             status,
-          } = await SignUpService({ username, password, name });
+          } = await SignUpService({ name, username, password,email});
           if (status === 200 || status === 201) {
             localStorage.setItem(
               'loginItems',
@@ -54,6 +53,7 @@ const AuthProvider = ({children}) =>{
           } 
         } catch (err) {
           console.log(err);
+          ToastHandler(ToastType.Error, `${err.response.data.errors}`);
         }
       };
 

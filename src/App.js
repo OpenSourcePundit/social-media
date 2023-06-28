@@ -24,7 +24,7 @@ function App() {
   // const { loader } = useData();
   return (
     <div className="App">
-        {/* {loader && <Loader />}
+        {/* {loader && <Loader />} */}
       <ToastContainer
         position='bottom-right'
         autoClose={false}
@@ -34,7 +34,7 @@ function App() {
         rtl={false}
         pauseOnFocusLoss
         draggable
-      /> */}
+      />
        <Routes>
           <Route path="/" element={<LandingPage/>}  />
           <Route path="/login" element={ <Login/>}  />

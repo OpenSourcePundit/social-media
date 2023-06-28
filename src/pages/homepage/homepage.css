@@ -19,13 +19,13 @@
     grid-area: header;
   }
   
-  aside1 {
+  .sidebar1 {
     grid-area: aside1;
     width: max-content;
     background-color: lynx-gray-color;
   }
   
-  aside2 {
+  .sidebar2 {
     grid-area: aside2;
     min-height: 200px;
     height: max-content;

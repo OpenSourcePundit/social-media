@@ -7,8 +7,10 @@ export const SignUpService = async ({
   name,
   username,
   password,
-}) =>
-  axios.post("/api/auth/signup", { name, username, password });
+  email
+}) =>{ return
+  axios.post("/api/auth/signup", { name, username, password,email})
+};
 
 //Post Controller
 
