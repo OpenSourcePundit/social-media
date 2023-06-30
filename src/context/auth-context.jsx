@@ -53,7 +53,7 @@ const AuthProvider = ({children}) =>{
           } 
         } catch (err) {
           console.log(err);
-          ToastHandler(ToastType.Error, `${err.response.data.errors}`);
+          ToastHandler(ToastType.Error, `${err?.response?.data?.errors}`);
         }
       };
 
