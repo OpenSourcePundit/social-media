@@ -1,4 +1,4 @@
-import React from "react";
+import {React,useContext} from "react";
 import "./../../base.css";
 import "./../../utility.css";
 import "./homepage.css";
@@ -12,8 +12,11 @@ import { CreatePost } from "../components/maincomponent/createpost/createpost";
 import { Profile } from "../components/maincomponent/profile/profile";
 import { RightSideBar } from "../components/sidecomponent/rightcomponent/rightsidebar";
 
+import { useData } from "../../context/data-context";
+
 export function HomePage() {
   const navigate = useNavigate();
+  const {allPosts} = useData();
   return (
     //     <div className="flex flex-column ">
 
@@ -196,7 +199,7 @@ export function HomePage() {
             </div>
           </div>
         </div>
-        {/* {<Post/>} */}
+        {allPosts?.map((post)=>{return(<Post post={post}/>)})}
         {/* {<Post/>}
         {<Post/>} */}
       </main>

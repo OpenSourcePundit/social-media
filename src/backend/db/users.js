@@ -16,7 +16,7 @@ export const users = [
   },
   {
     _id: "2",
-    name: "Shashank",
+    name: "Shashank Kumar",
     username: "shashank",
     password: "123",
     createdAt: formatDate(),
@@ -24,7 +24,7 @@ export const users = [
   },
   {
     _id: "3",
-    name: "Praveen",
+    name: "Praveen Shakya",
     username: "praveen",
     password: "123",
     createdAt: formatDate(),

@@ -2,16 +2,26 @@ import {useContext,createContext,useState,useEffect,useReducer} from 'react';
 import { ToastType } from '../utils/constants';
 import { ToastHandler } from '../utils/utils';
 
-import { GetAllPosts } from '../services/services';
-import { userReducer } from '../Reducer/userReducer';
-import { postReducer } from '../Reducer/postReducer';
+import { GetAllPosts,GetAllUsers } from '../services/services';
+import { useAuth } from './auth-context';
+import { mainReducer } from '../Reducer/mainReducer';
 
 const DataContext = createContext();
 
 const DataProvider = ({children}) =>{
 
-    const [poststate,postDispatch] = useReducer(postReducer,{})
-    const [userstate,userDispatch] = useReducer(userReducer,{})
+    const {currUser} = useAuth;
+    
+    const initialState = {
+        allPosts:[],
+        bookmarks:[],
+        followedUsers:[],
+        allUsers:[],
+    }
+
+  
+
+    const [state,dispatch] = useReducer(mainReducer,initialState)
 
 
 
@@ -20,23 +30,57 @@ const DataProvider = ({children}) =>{
     try{
         const {data:{posts},status}= await GetAllPosts();
         if(status===200){
-            console.log(posts);
+            console.log("posts:",posts)
+            console.log("state",state)
+            dispatch({
+                type:"get_all_posts",
+                payload: posts
+            })
+            console.log("datastate:",state);
+
+            dispatch({
+                type:"showstate",
+            })
+            
         }
 
     }
     catch(err){console.log("Error",err);}
    
   }  
-    const getUsersData = () =>{
-    
-   }
+  const getUsersData = async() =>{
+    try{
+        const {data:{users},status}= await GetAllUsers();
+        if(status===200){
+            console.log("usershehsa:",users)
+            console.log("stateuser",state)
+
+            dispatch({
+                type:"get_all_users",
+                payload: users
+            })
+            // console.log("data:",data);
+           
+        }
+
+    }
+    catch(err){console.log("Error",err);}
+   
+  }
 
 
 
-useEffect(() =>{getPostsData()},[])
+useEffect(() =>{getPostsData();getUsersData()},[]);
+
     return(
         <DataContext.Provider
-         value = {GetAllPosts}
+         value = {{
+            allPosts:state.allPosts,
+            bookmarks:state.bookmarks,
+            allUsers:state.allUsers,
+            followedUsers:state.followeedUsers,
+            dispatch:dispatch,
+         }}
         >
             {children}
         </DataContext.Provider>

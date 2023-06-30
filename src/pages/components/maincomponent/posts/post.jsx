@@ -1,6 +1,16 @@
 import "./post.css"
+import {React} from "react";
+import { useData } from "../../../../context/data-context"
 
-export const Post = () =>{
+
+export const Post = ({post}) =>{
+  
+
+  const {allUsers} = useData();
+
+  const fetchUserName = (username)=>{
+    return(allUsers.find((user)=>user.username===username).name)    
+  }
 
 
     return(
@@ -13,7 +23,7 @@ export const Post = () =>{
             <div className="post-box-right">
               <div className="flex flex-row flex-align-center flex-space-between post-top-section">
                 <div className="flex flex-row post-user-details">
-                  <p className="fw-semibold">Tanay Pratap</p>
+                  <p className="fw-semibold">{fetchUserName(post.username)}</p>
                   <p className="grey-color pl-xs">
                     @tanaypratap <span className="pl-xs">•</span>
                     <span className="pl-xs ">1 min</span>
