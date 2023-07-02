@@ -13,6 +13,10 @@ export const users = [
     password: "adarshBalika123",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    followers: [],
+    following: [],
+    bookmarks: [],
+
   },
   {
     _id: "2",
@@ -21,6 +25,9 @@ export const users = [
     password: "123",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    followers: [],
+    following: [],
+    bookmarks: [],
   },
   {
     _id: "3",
@@ -29,5 +36,8 @@ export const users = [
     password: "123",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    followers: [],
+    following: [],
+    bookmarks: [],
   },
 ];

@@ -60,24 +60,24 @@ export const EditUser = async ({encodedToken,userData}) => {
 
 //chancesoferror is in /
 export const GetBookmarkPosts = async ({encodedToken}) => {
-    return axios.get('/api/users/bookmark/',{ headers: { authorization: encodedToken } })
+    return axios.get('/api/users/bookmark',{ headers: { authorization: encodedToken } })
 }
 
 //chancesoferror is in /
 export const BookmarkPost = async ({encodedToken,postId}) => {
-    return axios.post(`/api/users/bookmark/${postId}/`, {headers: {authorization:encodedToken}})
+  return axios.post(`/api/users/bookmark/${postId}`,{}, { headers: {authorization:encodedToken}})
 }
 
 //chancesoferror is in /
 export const RemovePostFromBookmark = async ({encodedToken,postId}) => {
-    return axios.post(`/api/users/remove-bookmark/${postId}/`, {headers: {authorization:encodedToken}})
+  return axios.post(`/api/users/remove-bookmark/${postId}`,{}, {headers: {authorization:encodedToken}})
 }
 
 //i have doubts about the userId that has not come and need to be extracted from encoded token
 export const FollowUser = async ({followUserId,encodedToken}) => {
-    return axios.post (`/api/users/follow/${followUserId}/`,{ headers: { authorization: encodedToken } })
+    return axios.post (`/api/users/follow/${followUserId}`,{ headers: { authorization: encodedToken } })
 }
 
 export const UnfollowUser = async ({followUserId,encodedToken}) => {
-    return axios.post (`/api/users/unfollow/${followUserId}/`,{ headers: { authorization: encodedToken } })
+    return axios.post (`/api/users/unfollow/${followUserId}`,{ headers: { authorization: encodedToken } })
 }

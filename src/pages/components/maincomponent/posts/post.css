@@ -2,3 +2,9 @@
 .post-box-left{
     height: 50px;
   }
+  .post-box-right{
+    width:100%;
+  }
+  .post-main-section{
+    width: 100%;
+  }

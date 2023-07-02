@@ -17,6 +17,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Bookmarks } from "./pages/bookmark/bookmark";
 import { Profile } from "./pages/profile/profile";
+import { TestPage } from "./pages/testpage";
 
 
 function App() {
@@ -40,8 +41,11 @@ function App() {
           <Route path="/login" element={ <Login/>}  />
           <Route path ="/signup" element={<SignUp/>}/>
           <Route path="/home" element={<HomePage/>}/>
-          <Route path="/bookmark" element={<Bookmarks/>}/>
+          <Route path="/bookmarks" element={<Bookmarks/>}/>
           <Route path="/profile" element={<Profile/>}/>
+          <Route path="/test" element={<TestPage/>}  />
+
+
 
         </Routes>
     </div>
