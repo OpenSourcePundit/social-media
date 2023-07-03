@@ -1,4 +1,4 @@
-import React from "react";
+import {React} from "react";
 import "./../../base.css";
 import "./../../utility.css";
 import {useNavigate} from 'react-router-dom'
@@ -15,7 +15,8 @@ export function SignUp(){
 
   const submitHandler = ({name, username, password,email}) =>{
     console.log("email",email,"name",name,"username",username,"password",password);
-    signupHandler(name, username, password,email);
+    signupHandler(username, password,email,name);
+    navigate("/home");
   }
 
     return(

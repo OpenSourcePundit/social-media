@@ -8,6 +8,7 @@
     position: fixed;
     bottom: 20px;
     padding: 1em;
+    width:fit-content;
     justify-self: center ;
     justify-items: end;
 

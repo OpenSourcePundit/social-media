@@ -10,18 +10,22 @@
             return{
                 ...state, products:[...state.products, ...payload]
             };
-            case "get_all_posts":
-                console.log("pAYLOAD:",payload)
-                
+            case "get_all_posts":                
             return{
                 ...state,allPosts:[...payload]
             };
             case "get_all_users":
-                console.log("payload:",payload)
-                console.log("statereducer",state)
                 
             return{
                 ...state,allUsers:[...payload]
+            };
+            case "get_all_bookmarks": 
+            return{
+                ...state,bookmarks:[...payload],
+            };
+            case "add_new_user":                
+            return{
+                ...state,allUsers:[...state.allUsers,payload]
             };
             case "showstate":
                 console.log("statereducer 27",state);

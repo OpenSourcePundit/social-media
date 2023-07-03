@@ -1,7 +1,16 @@
 
 import "./leftsidebar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
+import {useAuth} from "../../../../context/auth-context";
+
+
 export const LeftSideBar = () =>{
+
+  const {currUser,logoutHandler} = useAuth();
+
+  const navigate = useNavigate();
+
+  
 
 
     return(
@@ -30,20 +39,20 @@ export const LeftSideBar = () =>{
               </Link>
             </div>
 
-            <button style={{borderRadius:"15px"}} className="mt-m p-s primary-bg  white-color border-none outline-transparent new-post-btn">
+            <button style={{borderRadius:"15px"}} className="mt-m p-s primary-bg  white-color border-none outline-transparent new-post-btn" onClick={()=>navigate('/home')}>
               Create New Post
             </button>
           </div>
-      <div className="flex flex-space-between  username-box">
+      <div className="flex flex-space-between white-bg  username-box">
         <div className="grey-bg br-full width-xs height-xs   post-box-left" style={{ aspectRatio: 1 }}></div>
         <div className="flex">
           <div className="grey-bg br-full width-xl height-xl"></div>
             <div className="flex flex-column ml-xs">
-              <div className="fw-bold">Tanay Pratap</div>
-              <div className="fw-light grey-color">@tanaypratap</div>
+              <div className="fw-bold">{currUser?.name}</div>
+              <div className="fw-light grey-color">@{currUser?.username}</div>
+              <div style={{borderRadius:"15px"}}className="mt-xs p-xs primary-bg  white-color border-none outline-transparent gen-btn" onClick={()=>logoutHandler()}>LogOut</div>
               </div>
         </div>
-        <div className="grey-color fw-bold">...</div>          
       </div>
       </div>
     )

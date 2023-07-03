@@ -2,7 +2,7 @@ import {useContext,createContext,useState,useEffect,useReducer} from 'react';
 import { ToastType } from '../utils/constants';
 import { ToastHandler } from '../utils/utils';
 
-import { GetAllPosts,GetAllUsers } from '../services/services';
+import { GetAllPosts,GetAllUsers,GetBookmarkPosts } from '../services/services';
 import { useAuth } from './auth-context';
 import { mainReducer } from '../Reducer/mainReducer';
 
@@ -10,7 +10,7 @@ const DataContext = createContext();
 
 const DataProvider = ({children}) =>{
 
-    const {currUser} = useAuth;
+    const {currUser,token} = useAuth();
     
     const initialState = {
         allPosts:[],
@@ -19,29 +19,22 @@ const DataProvider = ({children}) =>{
         allUsers:[],
     }
 
-  
+    
 
     const [state,dispatch] = useReducer(mainReducer,initialState)
 
-
+    
 
 
    const getPostsData = async() =>{
     try{
         const {data:{posts},status}= await GetAllPosts();
         if(status===200){
-            console.log("posts:",posts)
-            console.log("state",state)
             dispatch({
+
                 type:"get_all_posts",
                 payload: posts
             })
-            console.log("datastate:",state);
-
-            dispatch({
-                type:"showstate",
-            })
-            
         }
 
     }
@@ -52,9 +45,6 @@ const DataProvider = ({children}) =>{
     try{
         const {data:{users},status}= await GetAllUsers();
         if(status===200){
-            console.log("usershehsa:",users)
-            console.log("stateuser",state)
-
             dispatch({
                 type:"get_all_users",
                 payload: users
@@ -68,10 +58,22 @@ const DataProvider = ({children}) =>{
    
   }
 
+  const fetchBookmarks = async(token) =>{
+    try{
+        const {data:{bookmarks},status}= await GetBookmarkPosts({encodedToken:token});
+        if(status===200){
+            dispatch({
+                type:"get_all_bookmarks",
+                payload: bookmarks
+            })
+            
+           
+        }
 
-
-useEffect(() =>{getPostsData();getUsersData()},[]);
-
+    }
+    catch(err){console.log("Error",err);}
+   
+  }
     return(
         <DataContext.Provider
          value = {{
@@ -80,6 +82,11 @@ useEffect(() =>{getPostsData();getUsersData()},[]);
             allUsers:state.allUsers,
             followedUsers:state.followeedUsers,
             dispatch:dispatch,
+            getUsersData,
+            getPostsData,
+            fetchBookmarks,
+            item:"xyz",
+            state:state,
          }}
         >
             {children}

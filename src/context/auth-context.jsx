@@ -2,13 +2,14 @@ import { createContext, useContext, useState } from 'react';
 import { ToastType } from '../utils/constants';
 import { LoginService,SignUpService } from '../services/services';
 import { ToastHandler } from '../utils/utils';
-
+import { useNavigate} from "react-router-dom";
 
 const AuthContext = createContext();
 
 const AuthProvider = ({children}) =>{
 
-    const localStorageToken = JSON.parse(localStorage.getItem('loginItems'));
+    const navigate = useNavigate();
+    const localStorageToken = JSON?.parse(localStorage?.getItem('loginItems'));
     const [token, setToken] = useState(localStorageToken?.token);
     const [currUser, setCurrUser] = useState(localStorageToken?.user);
 
@@ -20,7 +21,8 @@ const AuthProvider = ({children}) =>{
             setCurrUser(foundUser);
             setToken(encodedToken);
             ToastHandler(ToastType.Success, "Login Successful !");
-
+            
+            navigate("/home")
           }
         }
       catch (err) {
@@ -29,19 +31,24 @@ const AuthProvider = ({children}) =>{
 
         }
       };
+
+
       const logoutHandler = () => {
-        ToastHandler(ToastType.Success, "Logged Out Successfully !");
         localStorage.removeItem('loginItems');
         setToken(null);
-        setCurrUser(null);
+        setCurrUser(null);        
+        ToastHandler(ToastType.Success, "Logged Out Successfully !");
       };
-      const signupHandler = async (name, username, password,email) => {
-        console.log("fromemail",email,"name",name,"username",username,"password",password);
+
+
+      const signupHandler = async (username, password,email,name) => {
+       console.log("fromemail",email,"name",name,"username",username,"password",password);
         try {
           const {
             data: { createdUser, encodedToken },
             status,
           } = await SignUpService({ name, username, password,email});
+          console.log("data",status);
           if (status === 200 || status === 201) {
             localStorage.setItem(
               'loginItems',
@@ -50,6 +57,7 @@ const AuthProvider = ({children}) =>{
             setCurrUser(createdUser);
             setToken(encodedToken);
             ToastHandler(ToastType.Success, 'Successfully signed Up');
+           
           } 
         } catch (err) {
           console.log(err);
@@ -61,7 +69,7 @@ const AuthProvider = ({children}) =>{
 
       return (
         <AuthContext.Provider
-          value={{ token, loginHandler, currUser, signupHandler, logoutHandler,setCurrUser}}
+          value={{ token, loginHandler, currUser, signupHandler, logoutHandler,setCurrUser,}}
         >
           {children}
         </AuthContext.Provider>
