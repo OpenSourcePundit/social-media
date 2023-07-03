@@ -53,7 +53,6 @@ export const LeftSideBar = () =>{
               <div style={{borderRadius:"15px"}}className="mt-xs p-xs primary-bg  white-color border-none outline-transparent gen-btn" onClick={()=>logoutHandler()}>LogOut</div>
               </div>
         </div>
-        <div className="grey-color fw-bold">...</div>
       </div>
       </div>
     )

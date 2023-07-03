@@ -18,7 +18,6 @@ const AuthProvider = ({children}) =>{
         const {data: {foundUser , encodedToken},status} = await LoginService({username,password});
           if(status === 200 ){
             localStorage.setItem('loginItems',JSON.stringify({token:encodedToken,user:foundUser}));
-
             setCurrUser(foundUser);
             setToken(encodedToken);
             ToastHandler(ToastType.Success, "Login Successful !");

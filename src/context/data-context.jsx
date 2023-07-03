@@ -74,12 +74,6 @@ const DataProvider = ({children}) =>{
     catch(err){console.log("Error",err);}
    
   }
-
-   
-
-
-
-
     return(
         <DataContext.Provider
          value = {{
