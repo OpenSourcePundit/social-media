@@ -9,8 +9,7 @@ const AuthContext = createContext();
 const AuthProvider = ({children}) =>{
 
     const navigate = useNavigate();
-
-    const localStorageToken = JSON.parse(localStorage.getItem('loginItems'));
+    const localStorageToken = JSON?.parse(localStorage?.getItem('loginItems'));
     const [token, setToken] = useState(localStorageToken?.token);
     const [currUser, setCurrUser] = useState(localStorageToken?.user);
 
@@ -19,6 +18,7 @@ const AuthProvider = ({children}) =>{
         const {data: {foundUser , encodedToken},status} = await LoginService({username,password});
           if(status === 200 ){
             localStorage.setItem('loginItems',JSON.stringify({token:encodedToken,user:foundUser}));
+
             setCurrUser(foundUser);
             setToken(encodedToken);
             ToastHandler(ToastType.Success, "Login Successful !");
@@ -32,19 +32,24 @@ const AuthProvider = ({children}) =>{
 
         }
       };
+
+
       const logoutHandler = () => {
-        ToastHandler(ToastType.Success, "Logged Out Successfully !");
         localStorage.removeItem('loginItems');
         setToken(null);
-        setCurrUser(null);
+        setCurrUser(null);        
+        ToastHandler(ToastType.Success, "Logged Out Successfully !");
       };
-      const signupHandler = async (name, username, password,email) => {
-        console.log("fromemail",email,"name",name,"username",username,"password",password);
+
+
+      const signupHandler = async (username, password,email,name) => {
+       console.log("fromemail",email,"name",name,"username",username,"password",password);
         try {
           const {
             data: { createdUser, encodedToken },
             status,
           } = await SignUpService({ name, username, password,email});
+          console.log("data",status);
           if (status === 200 || status === 201) {
             localStorage.setItem(
               'loginItems',
@@ -53,6 +58,7 @@ const AuthProvider = ({children}) =>{
             setCurrUser(createdUser);
             setToken(encodedToken);
             ToastHandler(ToastType.Success, 'Successfully signed Up');
+           
           } 
         } catch (err) {
           console.log(err);

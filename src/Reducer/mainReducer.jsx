@@ -23,6 +23,10 @@
             return{
                 ...state,bookmarks:[...payload],
             };
+            case "add_new_user":                
+            return{
+                ...state,allUsers:[...state.allUsers,payload]
+            };
             case "showstate":
                 console.log("statereducer 27",state);
 

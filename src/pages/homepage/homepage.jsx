@@ -1,4 +1,4 @@
-import {React,useContext} from "react";
+import {React,useEffect} from "react";
 import "./../../base.css";
 import "./../../utility.css";
 import "./homepage.css";
@@ -13,10 +13,23 @@ import { CreatePost } from "../components/maincomponent/createpost/createpost";
 import { RightSideBar } from "../components/sidecomponent/rightcomponent/rightsidebar";
 
 import { useData } from "../../context/data-context";
+import { useAuth } from "../../context/auth-context";
 
 export function HomePage() {
   const navigate = useNavigate();
-  const {allPosts,allUsers,getUsersData} = useData();
+  const {allPosts,allUsers,getPostsData,getUsersData,fetchBookmarks} = useData();
+  const {token} = useAuth();
+//   if(currUser){
+//     if(allUsers.some((usr)=>usr.username===currUser.username)){}
+//     else{
+//      dispatch({
+//          type:"add_new_user",
+//          payload: currUser,
+//      })
+//     }
+// }
+useEffect(() =>{getPostsData();getUsersData();fetchBookmarks(token)},[]);
+  console.log("HomePageAllUsers", allUsers);
   return (
     <div className="container">
       <Navbar />

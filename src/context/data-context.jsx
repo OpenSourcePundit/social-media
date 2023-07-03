@@ -19,11 +19,11 @@ const DataProvider = ({children}) =>{
         allUsers:[],
     }
 
-  
+    
 
     const [state,dispatch] = useReducer(mainReducer,initialState)
 
-
+    
 
 
    const getPostsData = async() =>{
@@ -75,9 +75,10 @@ const DataProvider = ({children}) =>{
    
   }
 
+   
 
 
-useEffect(() =>{getPostsData();getUsersData();fetchBookmarks(token)},[]);
+
 
     return(
         <DataContext.Provider
@@ -88,6 +89,8 @@ useEffect(() =>{getPostsData();getUsersData();fetchBookmarks(token)},[]);
             followedUsers:state.followeedUsers,
             dispatch:dispatch,
             getUsersData,
+            getPostsData,
+            fetchBookmarks,
             item:"xyz",
             state:state,
          }}
