@@ -10,7 +10,7 @@
             return{
                 ...state, products:[...state.products, ...payload]
             };
-            case "get_all_posts":                
+            case "get_all_posts":             
             return{
                 ...state,allPosts:[...payload]
             };

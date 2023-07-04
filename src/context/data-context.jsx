@@ -28,7 +28,7 @@ const DataProvider = ({children}) =>{
 
    const getPostsData = async() =>{
     try{
-        const {data:{posts},status}= await GetAllPosts();
+        const {data:{posts},status}= await GetAllPosts();       
         if(status===200){
             dispatch({
 

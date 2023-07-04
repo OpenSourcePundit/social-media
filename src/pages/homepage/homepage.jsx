@@ -29,7 +29,6 @@ export function HomePage() {
 //     }
 // }
 useEffect(() =>{getPostsData();getUsersData();fetchBookmarks(token)},[]);
-  console.log("HomePageAllUsers", allUsers);
   return (
     <div className="container">
       <Navbar />
