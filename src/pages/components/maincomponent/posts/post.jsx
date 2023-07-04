@@ -1,5 +1,6 @@
 import "./post.css"
 import {React} from "react";
+import {useNavigate} from "react-router-dom"
 import { useData } from "../../../../context/data-context"
 import { useAuth } from "../../../../context/auth-context";
 import { RemovePostFromBookmark,BookmarkPost,LikePost,DislikePost } from "../../../../services/services";
@@ -7,7 +8,7 @@ import { ToastHandler } from "../../../../utils/utils";
 import { ToastType } from "../../../../utils/constants";
 
 export const Post = ({post}) =>{
-  
+  const navigate = useNavigate();
   const {token,currUser} = useAuth();
   const {allUsers,bookmarks,dispatch,allPosts,state} = useData();
   // console.log("state",state,"curruser",currUser)
@@ -99,8 +100,8 @@ export const Post = ({post}) =>{
           <div className="flex flex-row nowrap p-xs">
           
             <div
-              className="grey-bg br-full width-xs height-xs p-xs mr-xs post-box-left"
-              style={{ aspectRatio: 1 }}
+              className="grey-bg br-full width-xs height-xs p-xs mr-xs post-box-left gen-btn"
+              style={{ aspectRatio: 1 }} onClick={()=>navigate(`/profile/${post.username}`)}
             ></div>
             <div className="post-box-right">
               <div className="flex flex-row flex-align-center flex-space-between post-top-section">

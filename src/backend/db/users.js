@@ -10,12 +10,18 @@ export const users = [
     _id: "1",
     name: "Adarsh Balika",
     username: "adarshbalika",
-    password: "adarshBalika123",
+    password: "1",
     createdAt: formatDate(),
     updatedAt: formatDate(),
     followers: [],
-    following: [],
+    following: [{
+      _id: "2",
+      name: "Shashank Kumar",
+      username: "shashank",
+    }],
     bookmarks: [],
+    bio:"Senior Software Engineer @Microsoft | Creator of Indias biggest programming community | Tweets about JavaScript, ReactJS, Career and Startups",
+    portfoliourl:"Microsoft.com",
 
   },
   {

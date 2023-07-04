@@ -22,10 +22,9 @@ export const LeftSideBar = () =>{
               </Link>
             </div>
             <div className="pt-s black-color fw-semibold link-wrap">
-              <Link className="link" to="../explore">
-                
+              <div className="link gen-btn" onClick={()=>navigate(`/explore`)}>
                 <span><i className="bi bi-house"></i>  Explore</span>
-              </Link>
+              </div>
             </div>
             <div className="pt-s black-color fw-semibold link-wrap">
               <Link className="link" to="../bookmarks">
@@ -33,10 +32,10 @@ export const LeftSideBar = () =>{
                 <span><i className="bi bi-bookmark"></i>  Bookmark</span>
               </Link>
             </div>
-            <div className="pt-s black-color fw-semibold link-wrap">
-              <Link className="link" to="../profile">                
+            <div className="pt-s black-color fw-semibold link-wrap gen-btn">
+              <div className="link" onClick={()=>navigate(`/profile/${currUser.username}`)}>                
                 <span><i className="bi bi-person"></i>  Profile</span>
-              </Link>
+              </div>
             </div>
 
             <button style={{borderRadius:"15px"}} className="mt-m p-s primary-bg  white-color border-none outline-transparent new-post-btn" onClick={()=>navigate('/home')}>
