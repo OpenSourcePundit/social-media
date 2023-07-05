@@ -40,12 +40,11 @@ function App() {
        <Routes>
           <Route path="/" element={<LandingPage/>}  />
           <Route path="/login" element={ <Login/>}  />
-          <Route path ="/signup" element={<SignUp/>}/>
-          <Route path="/home" element={<HomePage/>}/>
-          <Route path="/explore" element={<ExplorePage/>}/>
-
-          <Route path="/bookmarks" element={<Bookmarks/>}/>
-          <Route path="/profile/:username" element={<ProfilePage/>}/>
+          <Route path ="/signup" element={<SignUp/>} />
+          <Route path="/home" element={<HomePage/>} />
+          <Route path="/explore" element={<ExplorePage/>} />
+          <Route path="/bookmarks" element={<Bookmarks/>} />
+          <Route path="/profile/:username" element={<ProfilePage/>} />
           <Route path="/test" element={<TestPage/>}  />
 
 

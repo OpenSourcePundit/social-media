@@ -18,7 +18,7 @@ export const LeftSideBar = () =>{
           <div className="flex flex-column flex-space-between nav-wrapper">
             <div className="pt-s black-color fw-semibold link-wrap">
               <Link className="link" to="../home">                
-                <span className="fw-bold"><i className="bi bi-house"></i>  Home</span>
+                <span className="fw-semibold"><i className="bi bi-house"></i>  Home</span>
               </Link>
             </div>
             <div className="pt-s black-color fw-semibold link-wrap">

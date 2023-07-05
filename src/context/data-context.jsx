@@ -2,7 +2,7 @@ import {useContext,createContext,useState,useEffect,useReducer} from 'react';
 import { ToastType } from '../utils/constants';
 import { ToastHandler } from '../utils/utils';
 
-import { GetAllPosts,GetAllUsers,GetBookmarkPosts } from '../services/services';
+import { GetAllPosts,GetAllUsers,GetBookmarkPosts,FollowUser,UnfollowUser} from '../services/services';
 import { useAuth } from './auth-context';
 import { mainReducer } from '../Reducer/mainReducer';
 
@@ -74,6 +74,35 @@ const DataProvider = ({children}) =>{
     catch(err){console.log("Error",err);}
    
   }
+
+  const followUserHandler = async(user1,token) =>{
+    try{
+        const {data:{user,followUser},status}= await FollowUser({encodedToken:token,followUserId:user1._id});
+        if(status===200){
+          ToastHandler(ToastType.Success, `Followed ${followUser.name} !`);
+            dispatch({
+                type:"update follow user",
+                payload: {user,followUser},
+            })
+        }
+    }
+    catch(err){console.log("Error",err); ToastHandler(ToastType.Error, `${err?.response?.data?.errors}`);}
+
+}
+  const unfollowUserHandler = async(user1,token) =>{
+    try{
+        const {data:{user,followUser},status}= await UnfollowUser({encodedToken:token,followUserId:user1._id});
+        if(status===200){
+          ToastHandler(ToastType.Success, `Un-Followed ${followUser.name} !`);
+            dispatch({
+                type:"update follow user",
+                payload: {user,followUser},
+            })
+        }
+    }
+    catch(err){console.log("Error",err); ToastHandler(ToastType.Error, `${err?.response?.data?.errors}`);}
+
+}
     return(
         <DataContext.Provider
          value = {{
@@ -83,6 +112,8 @@ const DataProvider = ({children}) =>{
             followedUsers:state.followeedUsers,
             dispatch:dispatch,
             getUsersData,
+            followUserHandler,
+            unfollowUserHandler,
             getPostsData,
             fetchBookmarks,
             item:"xyz",

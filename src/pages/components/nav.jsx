@@ -6,7 +6,7 @@ export const Navbar = () => {
 
   return (
     <nav className="white-bg">
-      <div className="p-s pl-xxl txt-m ml-m ">
+      <div className="p-s pl-l txt-m  ">
         <h3>
           <span onClick={() => navigate("/")} className="primary-color gen-btn">
             My

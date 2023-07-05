@@ -98,11 +98,20 @@ export const Post = ({post}) =>{
     return(
         <div  className="white-bg mr-xxl rounded p-xs mt-s post-box">
           <div className="flex flex-row nowrap p-xs">
+
+          {/* <img src={`${allUsers.find((user)=>user.username===post.username).profile_pic}`} className=" br-full width-xs height-xs p-xs mr-xs post-box-left gen-btn"
+              style={{ aspectRatio: 1 }} onClick={()=>navigate(`/profile/${post.username}`)} /> */}
+
+
           
-            <div
+          { allUsers.find((user)=>user.username===post.username)?.profile_pic ===undefined ? <div
               className="grey-bg br-full width-xs height-xs p-xs mr-xs post-box-left gen-btn"
               style={{ aspectRatio: 1 }} onClick={()=>navigate(`/profile/${post.username}`)}
             ></div>
+            :
+            <img src={`${allUsers.find((user)=>user.username===post.username).profile_pic}`} className=" br-full width-s height-s  mr-xs  gen-btn"
+              style={{ aspectRatio: 1 }} onClick={()=>navigate(`/profile/${post.username}`)} />
+           }
             <div className="post-box-right">
               <div className="flex flex-row flex-align-center flex-space-between post-top-section">
                 <div className="flex flex-row post-user-details">

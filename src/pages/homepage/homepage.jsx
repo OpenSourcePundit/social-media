@@ -17,7 +17,7 @@ import { useAuth } from "../../context/auth-context";
 
 export function HomePage() {
   const navigate = useNavigate();
-  const {allPosts,allUsers,getPostsData,getUsersData,fetchBookmarks} = useData();
+  const {allPosts,allUsers,getPostsData,getUsersData,fetchBookmarks,state} = useData();
   const {token,currUser} = useAuth();
 //   if(currUser){
 //     if(allUsers.some((usr)=>usr.username===currUser.username)){}
@@ -62,7 +62,8 @@ useEffect(() =>{getPostsData();getUsersData();fetchBookmarks(token)},[]);
             </div>
           </div>
         </div>
-        {allPosts?.filter((post)=>allUsers.find((user)=>user.username===currUser.username).following.some((following)=>following.username===post.username)).map((post)=>{return(<Post post={post} key={post._id}/>)})}
+        {/* {console.log("state@home",state)} */}
+        {allPosts?.filter((post)=>allUsers.find((user)=>user.username===currUser.username).following?.some((following)=>following?.username===post.username)).map((post)=>{return(<Post post={post} key={post._id}/>)})}
       </main>
        {<RightSideBar/>}
     </div>

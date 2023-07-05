@@ -27,6 +27,13 @@
             return{
                 ...state,allUsers:[...state.allUsers,payload]
             };
+            case "update follow user":
+                console.log("payload",payload)
+                console.log("payloadopen", {...payload})
+
+                let tempusers = [...state.allUsers];
+                tempusers = tempusers.filter((temp)=>temp.username!==payload.user.username && temp.username!==payload.followUser.username)
+            return{...state,allUsers:[...tempusers,payload.user,payload.followUser]}
             case "showstate":
                 console.log("statereducer 27",state);
 

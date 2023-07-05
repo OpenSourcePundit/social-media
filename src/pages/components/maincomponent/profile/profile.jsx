@@ -4,8 +4,8 @@ import "./profile.css"
 
 export const Profile = ({user}) =>{
 
-  const {currUser} = useAuth();
-  const {allPosts,allUsers} = useData();
+  const {currUser,token} = useAuth();
+  const {allPosts,allUsers,followUserHandler,unfollowUserHandler} = useData();
 
     return(
         <div className="flex flex-column flex-center pr-xl mr-l">
@@ -19,11 +19,11 @@ export const Profile = ({user}) =>{
           </button>
           ):
           (allUsers.find((user)=>user.username===currUser.username).following.some((selffollowing)=>selffollowing.username===user.username)?
-          <button className="border lynx-white-bg p-xs m-xs fw-semibold width-8">
+          <button className="border lynx-white-bg p-xs m-xs fw-semibold width-8" onClick={()=>unfollowUserHandler(user,token)}>
             Unfollow
           </button>
           :
-          <button className="border lynx-white-bg p-xs m-xs fw-semibold width-8">
+          <button className="border lynx-white-bg p-xs m-xs fw-semibold width-8" onClick={()=>followUserHandler(user,token)}>
             Follow
           </button>
           )}

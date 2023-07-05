@@ -20,7 +20,7 @@ const AuthProvider = ({children}) =>{
             localStorage.setItem('loginItems',JSON.stringify({token:encodedToken,user:foundUser}));
             setCurrUser(foundUser);
             setToken(encodedToken);
-            ToastHandler(ToastType.Success, "Login Successful !");
+            ToastHandler(ToastType.Success, `Logged in as ${foundUser.name} !`);
             
             navigate("/home")
           }
@@ -56,7 +56,7 @@ const AuthProvider = ({children}) =>{
             );
             setCurrUser(createdUser);
             setToken(encodedToken);
-            ToastHandler(ToastType.Success, 'Successfully signed Up');
+            ToastHandler(ToastType.Success, `Successfully signed Up as ${createdUser.name}`);
            
           } 
         } catch (err) {
