@@ -58,14 +58,11 @@ export function Login(){
         </div>
         <div className="flex flex-align-center flex-space-between mt-m mb-m">
           <div className="txt-s flex flex-align-center">
-            <input className="p-s txt-cursor" type="checkbox" name="rmbr-me" id="" />
-            <label className="pl-xs txt-cursor" htmlFor="rmbr-me">
-              Remember Me
-            </label>
+            
           </div>
-          <p href="#" className="action-color">
+          {/* <p href="#" className="action-color">
             Forgot your password?
-          </p>
+          </p> */}
         </div>
         <button type="submit" className="w-full primary-bg white-color p-s outline-transparent border-none pt-xs pb-xs txt-s">
           Login
@@ -74,6 +71,10 @@ export function Login(){
         <p href="#" className="txt-center w-full mt-m" style={{ display: 'block',cursor:"pointer" }}onClick={()=>navigate("/signup")}>
           Create New Account &gt;
         </p>
+
+        <button className="pl-xs primary-bg white-color p-s outline-transparent border-none pt-xs pb-xs txt-s " onClick={()=>loginHandler("adarshbalika","1")}>
+              Login As Test User
+            </button>
       </div>
     </div>
     )

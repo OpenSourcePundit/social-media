@@ -1,0 +1,30 @@
+a{
+    text-decoration: none;
+}
+.pic-box{
+    height: 50px;
+    width:50px;
+}
+img{
+    height: 50px;
+    width:50px;
+}
+.follow-box-name{
+    overflow-wrap: break-word;
+
+}
+.follow-btn{
+    cursor: pointer;
+    padding: 1px 5px;
+}
+.follow-btn:hover{
+    color: antiquewhite;
+    background-color:#FF3B30;
+    transition: 3ms;
+    padding: 1px 5px;
+
+}
+.user1-box-left{
+    height: 50px;
+    width:50px;
+}

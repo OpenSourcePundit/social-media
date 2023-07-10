@@ -119,7 +119,6 @@ export const getBookmarkPostsHandler = function (schema, request) {
  * */
 
 export const bookmarkPostHandler = function (schema, request) {
-  
   const { postId } = request.params;
   const post = schema.posts.findBy({ _id: postId }).attrs;
   const user = requiresAuth.call(this, request);
@@ -145,7 +144,7 @@ export const bookmarkPostHandler = function (schema, request) {
         { errors: ["This Post is already bookmarked"] }
       );
     }
-    user.bookmarks.push({ _id:post._id,likes:post.likes, username: post.username, content: post.content, createdAt: post.createdAt, updatedAt: post.updatedAt, });
+    user.bookmarks.push({ _id:post._id, username: post.username, content: post.content, createdAt: post.createdAt, updatedAt: post.updatedAt });
     // this.db.users.update(
     //   { _id: user._id },
     //   { ...user, updatedAt: formatDate() }

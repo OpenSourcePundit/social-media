@@ -16,9 +16,10 @@ export const GetAllUserPost = async ({ username }) =>
   axios.get(`/api/posts/user/${username}`);
 
 export const CreatePost = async ({ content, encodedToken }) => {
+  console.log("createpostcontent@services",content)
   return axios.post(
-    "/api/user/posts/",
-    { content },
+    "/api/posts/",
+    { postData:{content}},
     { headers: { authorization: encodedToken } }
   );
 };
@@ -32,19 +33,19 @@ export const EditPost = async ({ encodedToken, postData, postId }) => {
 };
 
 export const LikePost = async ({ encodedToken, postId }) => {
-  return axios.post(`/api/posts/like/${postId}`, {
+  return axios.post(`/api/posts/like/${postId}`,{}, {
     headers: { authorization: encodedToken },
   });
 };
 
 export const DislikePost = async ({ encodedToken, postId }) => {
-  return axios.post(`/api/posts/dislike/${postId}`, {
+  return axios.post(`/api/posts/dislike/${postId}`,{}, {
     headers: { authorization: encodedToken },
   });
 };
 
 export const DeletePost = async ({ encodedToken, postId }) => {
-  return axios.delete(`/api/user/posts/${postId}`, {
+  return axios.delete(`/api/posts/${postId}`, {
     headers: { authorization: encodedToken },
   });
 };

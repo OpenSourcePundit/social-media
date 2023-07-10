@@ -1,4 +1,4 @@
-import {React} from "react";
+import {React,useEffect} from "react";
 import "./../../base.css";
 import "./../../utility.css";
 import "./bookmark.css";
@@ -9,12 +9,13 @@ import { Post } from "../components/maincomponent/posts/post";
 import { RightSideBar } from "../components/sidecomponent/rightcomponent/rightsidebar";
 
 import { useData } from "../../context/data-context";
+import { useAuth } from "../../context/auth-context";
 
 export function Bookmarks() {
-
+  const {bookmarks,allPosts,getPostsData,getUsersData,fetchBookmarks} = useData();
+  const {token} = useAuth();
+  useEffect(() =>{getPostsData();getUsersData();fetchBookmarks(token)},[]);
   
-
-  const {bookmarks} = useData();
     return(
         <div className="container">
         <Navbar />        
@@ -25,8 +26,9 @@ export function Bookmarks() {
         <div className="flex flex-space-between mr-xxl flex-align-center pt-s latest-post-heading">
             <h3 className="">BookMarks</h3>            
         </div>
-          { bookmarks?.length !== 0 ?
-          bookmarks?.map((bookmark)=>{return(<Post post={bookmark} key={bookmark._id}/>)}) :
+          { bookmarks?.length !== 0 ?          
+          allPosts?.filter((post) => (bookmarks.some((bookmark) => bookmark._id === post?._id)))
+          .map((bookmark)=>{return(<Post post={bookmark} key={bookmark._id}/>)}) :
            "there are no BOOKMARKS"
           }
         </main>

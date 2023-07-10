@@ -3,3 +3,17 @@
     height: 100px;
     margin-top: 1rem;
   }
+.profile-pic{
+  height: 130px;
+  width: 130px;
+}
+.profile-pic-div{
+  display: flex;
+}
+.avatar{
+  display:flex;
+}
+.avatar img{
+  margin: .2rem;
+  padding: .2rem;
+}

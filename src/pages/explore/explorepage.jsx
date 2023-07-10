@@ -1,7 +1,7 @@
 import {React,useEffect} from "react";
 import "./../../base.css";
 import "./../../utility.css";
-import "./homepage.css";
+import "./explorepage.css";
 import { useNavigate, Link } from "react-router-dom";
 import bootstrap from "bootstrap";
 
@@ -11,15 +11,14 @@ import { Post } from "../components/maincomponent/posts/post";
 import { CreatePost } from "../components/maincomponent/createpost/createpost";
 // import { Profile } from "../components/maincomponent/profile/profile";
 import { RightSideBar } from "../components/sidecomponent/rightcomponent/rightsidebar";
-import { Modals } from "../../allmodals";
 
 import { useData } from "../../context/data-context";
 import { useAuth } from "../../context/auth-context";
 
-export function HomePage() {
+export function ExplorePage() {
   const navigate = useNavigate();
-  const {allPosts,allUsers,getPostsData,getUsersData,fetchBookmarks,state,sortByTrending,sortByDate} = useData();
-  const {token,currUser} = useAuth();
+  const {allPosts,allUsers,getPostsData,getUsersData,fetchBookmarks,sortByTrending,sortByDate} = useData();
+  const {token} = useAuth();
 //   if(currUser){
 //     if(allUsers.some((usr)=>usr.username===currUser.username)){}
 //     else{
@@ -35,8 +34,6 @@ useEffect(() =>{getPostsData();getUsersData();fetchBookmarks(token)},[]);
       <Navbar />
       <LeftSideBar />   
       <main className="main">
-        {/* <Profile/> */}
-        {/* <CreatePost/> */}
         <div className="flex flex-space-between mr-xxl flex-align-center pt-s latest-post-heading">
           <h3 className="">Latest Posts</h3>
           <div className="dropdown">
@@ -51,23 +48,22 @@ useEffect(() =>{getPostsData();getUsersData();fetchBookmarks(token)},[]);
               <i className="bi bi-funnel p-xs"></i>
             </button>
             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a className="dropdown-item" href="#" onClick={(e)=>{e.preventDefault();sortByTrending(allPosts)}}>
+            <a className="dropdown-item" href="#" onClick={(e)=>{e.preventDefault();sortByTrending(allPosts)}}>
                 Sort By Trending
               </a>
               <a className="dropdown-item" href="#" onClick={(e)=>{e.preventDefault();sortByDate(allPosts)}}>
                 Sort By Date
               </a>
-              
             </div>
           </div>
         </div>
-        {/* {console.log("state@home",state)} */}
-        {allPosts?.filter((post)=>allUsers?.find((user)=>user?.username===currUser?.username)?.following?.some((following)=>following?.username===post?.username))?.map((post)=>{return(<Post post={post} key={post?._id}/>)})}
+        {allPosts?.map((post)=>{return(<Post post={post} key={post._id}/>)})}
+        {/* {<Post/>}
+        {<Post/>} */}
       </main>
        {<RightSideBar/>}
     </div>
   );
 }
-
 
 

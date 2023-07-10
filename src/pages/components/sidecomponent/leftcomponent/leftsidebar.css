@@ -19,3 +19,9 @@
     flex-direction: column;
     width: 90%;
 }
+.btn-primary:hover{
+    color: white ;
+    background-color: #ff0000;
+    font-weight: 400;
+
+}
