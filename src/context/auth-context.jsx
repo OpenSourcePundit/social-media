@@ -41,6 +41,7 @@ const AuthProvider = ({children}) =>{
         setCurrUser(null);  
         setIsLoggedIn(false);
         ToastHandler(ToastType.Success, "Logged Out Successfully !");
+        navigate("/")
       };
 
 
