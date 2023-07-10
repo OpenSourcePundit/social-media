@@ -54,13 +54,15 @@ const AuthProvider = ({children}) =>{
           } = await SignUpService({ name, username, password,email});
           
           if (status === 200 || status === 201) {
-            setIsLoggedIn(true);
+            
             localStorage.setItem(
               'loginItems',
               JSON.stringify({ token: encodedToken, user: createdUser })
             );
             setCurrUser(createdUser);
             setToken(encodedToken);
+            setIsLoggedIn(true);
+            navigate("/home")
             
             ToastHandler(ToastType.Success, `Successfully signed Up as ${createdUser.name}`);
            
