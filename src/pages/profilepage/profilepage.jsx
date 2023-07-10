@@ -43,10 +43,10 @@ export const ProfilePage = () =>{
                   <i className="bi bi-funnel p-xs"></i>
                 </button>
                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a className="dropdown-item" href="#" onClick={()=>sortByTrending(allPosts)}>
+                <a className="dropdown-item" href="#" onClick={(e)=>{e.preventDefault();sortByTrending(allPosts)}}>
                 Sort By Trending
               </a>
-              <a className="dropdown-item" href="#" onClick={()=>sortByDate(allPosts)}>
+              <a className="dropdown-item" href="#" onClick={(e)=>{e.preventDefault();sortByDate(allPosts)}}>
                 Sort By Date
               </a>
                 </div>
