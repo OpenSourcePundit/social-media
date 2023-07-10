@@ -11,6 +11,7 @@ import { Post } from "../components/maincomponent/posts/post";
 import { CreatePost } from "../components/maincomponent/createpost/createpost";
 // import { Profile } from "../components/maincomponent/profile/profile";
 import { RightSideBar } from "../components/sidecomponent/rightcomponent/rightsidebar";
+import { Modals } from "../../allmodals";
 
 import { useData } from "../../context/data-context";
 import { useAuth } from "../../context/auth-context";
@@ -35,7 +36,7 @@ useEffect(() =>{getPostsData();getUsersData();fetchBookmarks(token)},[]);
       <LeftSideBar />   
       <main className="main">
         {/* <Profile/> */}
-        <CreatePost/>
+        {/* <CreatePost/> */}
         <div className="flex flex-space-between mr-xxl flex-align-center pt-s latest-post-heading">
           <h3 className="">Latest Posts</h3>
           <div className="dropdown">

@@ -1,4 +1,4 @@
-import {Routes,Route} from "react-router-dom";
+import {Routes,Route,useLocation,Navigate} from "react-router-dom";
 
 
 import { Loader } from './utils/utils';
@@ -11,19 +11,31 @@ import './App.css';
 import './base.css';
 // import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
-// import { useAuth } from './contexts/auth-context';
-// import { useData } from './contexts/data-context';
+import { useAuth } from "./context/auth-context";
+import { useData } from './context/data-context';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Bookmarks } from "./pages/bookmark/bookmark";
 import { ProfilePage } from "./pages/profilepage/profilepage";
 import { TestPage } from "./pages/testpage";
+import { Modals } from "./allmodals";
 
 
 function App() {
   
   // const { loader } = useData();
+
+  const {isLoggedIn, } = useAuth();
+  
+
+  const RequiresAuth = ({children, isLoggedIn})=>{
+     const location = useLocation();
+     return isLoggedIn ? children :( <Navigate to="/login"  state={{from:location}} />)
+     
+  }
+
+
   return (
     <div className="App">
         {/* {loader && <Loader />} */}
@@ -41,15 +53,20 @@ function App() {
           <Route path="/" element={<LandingPage/>}  />
           <Route path="/login" element={ <Login/>}  />
           <Route path ="/signup" element={<SignUp/>} />
-          <Route path="/home" element={<HomePage/>} />
-          <Route path="/explore" element={<ExplorePage/>} />
-          <Route path="/bookmarks" element={<Bookmarks/>} />
-          <Route path="/profile/:username" element={<ProfilePage/>} />
-          <Route path="/test" element={<TestPage/>}  />
+          <Route path="/home" element={<RequiresAuth isLoggedIn={isLoggedIn}><HomePage/></RequiresAuth>} />
+          <Route path="/explore" element={<RequiresAuth isLoggedIn={isLoggedIn}><ExplorePage/></RequiresAuth>} />
+          <Route path="/bookmarks" element={<RequiresAuth isLoggedIn={isLoggedIn}><Bookmarks/></RequiresAuth>} />
+          <Route path="/profile/:username" element={<RequiresAuth isLoggedIn={isLoggedIn}><ProfilePage/></RequiresAuth>} />
+          <Route path="/test" element={<TestPage/>}/>
 
 
 
         </Routes>
+
+        
+      <Modals/>
+
+        
     </div>
     
   );

@@ -16,9 +16,10 @@ export const GetAllUserPost = async ({ username }) =>
   axios.get(`/api/posts/user/${username}`);
 
 export const CreatePost = async ({ content, encodedToken }) => {
+  console.log("createpostcontent@services",content)
   return axios.post(
-    "/api/user/posts/",
-    { content },
+    "/api/posts/",
+    { postData:{content}},
     { headers: { authorization: encodedToken } }
   );
 };
@@ -44,7 +45,7 @@ export const DislikePost = async ({ encodedToken, postId }) => {
 };
 
 export const DeletePost = async ({ encodedToken, postId }) => {
-  return axios.delete(`/api/user/posts/${postId}`, {
+  return axios.delete(`/api/posts/${postId}`, {
     headers: { authorization: encodedToken },
   });
 };

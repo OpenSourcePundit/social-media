@@ -1,4 +1,4 @@
-import {useContext,createContext,useState,useEffect,useReducer} from 'react';
+import {useContext,createContext,useState,useReducer} from 'react';
 import { ToastType } from '../utils/constants';
 import { ToastHandler } from '../utils/utils';
 
@@ -11,6 +11,7 @@ const DataContext = createContext();
 const DataProvider = ({children}) =>{
 
     const {currUser,token} = useAuth();
+    const [editPostId,setEditPostId] = useState()
     
     const initialState = {
         allPosts:[],
@@ -117,6 +118,8 @@ const DataProvider = ({children}) =>{
             getPostsData,
             fetchBookmarks,
             item:"xyz",
+            editPostId,
+            setEditPostId,
             state:state,
          }}
         >

@@ -10,6 +10,7 @@ import { LeftSideBar } from "../components/sidecomponent/leftcomponent/leftsideb
 import { Post } from "../components/maincomponent/posts/post";
 import { Profile } from "../components/maincomponent/profile/profile";
 import { RightSideBar } from "../components/sidecomponent/rightcomponent/rightsidebar";
+import { Modals } from "../../allmodals";
 
 import { useData } from "../../context/data-context";
 import { useAuth } from "../../context/auth-context";

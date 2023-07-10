@@ -8,10 +8,10 @@ export const Navbar = () => {
     <nav className="white-bg">
       <div className="p-s pl-l txt-m  ">
         <h3>
-          <span onClick={() => navigate("/")} className="primary-color gen-btn">
+          <span onClick={() => navigate("/home")} className="primary-color gen-btn">
             My
           </span>
-          <span onClick={() => navigate("/")} className="gen-btn">
+          <span onClick={() => navigate("/home")} className="gen-btn">
             Website
           </span>
         </h3>
