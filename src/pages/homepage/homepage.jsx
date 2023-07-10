@@ -18,7 +18,7 @@ import { useAuth } from "../../context/auth-context";
 
 export function HomePage() {
   const navigate = useNavigate();
-  const {allPosts,allUsers,getPostsData,getUsersData,fetchBookmarks,state} = useData();
+  const {allPosts,allUsers,getPostsData,getUsersData,fetchBookmarks,state,sortByTrending,sortByDate} = useData();
   const {token,currUser} = useAuth();
 //   if(currUser){
 //     if(allUsers.some((usr)=>usr.username===currUser.username)){}
@@ -51,15 +51,13 @@ useEffect(() =>{getPostsData();getUsersData();fetchBookmarks(token)},[]);
               <i className="bi bi-funnel p-xs"></i>
             </button>
             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a className="dropdown-item" href="#">
-                Action
+              <a className="dropdown-item" href="#" onClick={()=>sortByTrending(allPosts)}>
+                Sort By Trending
               </a>
-              <a className="dropdown-item" href="#">
-                Another action
+              <a className="dropdown-item" href="#" onClick={()=>sortByDate(allPosts)}>
+                Sort By Date
               </a>
-              <a className="dropdown-item" href="#">
-                Something else here
-              </a> 
+              
             </div>
           </div>
         </div>
@@ -70,3 +68,6 @@ useEffect(() =>{getPostsData();getUsersData();fetchBookmarks(token)},[]);
     </div>
   );
 }
+
+
+

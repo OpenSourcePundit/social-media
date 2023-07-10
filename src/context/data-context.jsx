@@ -104,6 +104,20 @@ const DataProvider = ({children}) =>{
     catch(err){console.log("Error",err); ToastHandler(ToastType.Error, `${err?.response?.data?.errors}`);}
 
 }
+
+  const sortByDate = (posts) => {
+    dispatch({
+        type:"get_all_posts",
+        payload: [...posts].sort((a,b)=>Date.parse(b.updatedAt) - Date.parse(a.updatedAt))
+    })
+  }
+  const sortByTrending = (posts) => {
+    dispatch({
+        type:"get_all_posts",
+        payload: [...posts].sort((a,b)=>Date.parse(b.likes.likeCount) - Date.parse(a.likes.likeCount))
+    })
+  }
+   
     return(
         <DataContext.Provider
          value = {{
@@ -121,6 +135,8 @@ const DataProvider = ({children}) =>{
             editPostId,
             setEditPostId,
             state:state,
+            sortByDate,
+            sortByTrending,
          }}
         >
             {children}

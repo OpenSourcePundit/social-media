@@ -17,7 +17,7 @@ import { useAuth } from "../../context/auth-context";
 
 export const ProfilePage = () =>{
     const navigate = useNavigate();
-    const {allPosts,allUsers,getPostsData,getUsersData,fetchBookmarks,state} = useData();
+    const {allPosts,allUsers,getPostsData,getUsersData,fetchBookmarks,state,sortByTrending,sortByDate} = useData();
     const {token,currUser} = useAuth();
     const {username} = useParams();
     console.log(username);
@@ -43,15 +43,12 @@ export const ProfilePage = () =>{
                   <i className="bi bi-funnel p-xs"></i>
                 </button>
                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a className="dropdown-item" href="#">
-                    Action
-                  </a>
-                  <a className="dropdown-item" href="#">
-                    Another action
-                  </a>
-                  <a className="dropdown-item" href="#">
-                    Something else here
-                  </a>
+                <a className="dropdown-item" href="#" onClick={()=>sortByTrending(allPosts)}>
+                Sort By Trending
+              </a>
+              <a className="dropdown-item" href="#" onClick={()=>sortByDate(allPosts)}>
+                Sort By Date
+              </a>
                 </div>
               </div>
             </div>

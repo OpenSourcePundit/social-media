@@ -1,9 +1,11 @@
 import "./leftsidebar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../../context/auth-context";
+import { useData } from "../../../../context/data-context";
 
 export const LeftSideBar = () => {
   const { currUser, logoutHandler } = useAuth();
+  const {allUsers} = useData();
 
   const navigate = useNavigate();
 
@@ -54,10 +56,14 @@ export const LeftSideBar = () => {
         </button>
       </div>
       <div className="flex flex-space-between white-bg  username-box">
-        <div
-          className="grey-bg br-full width-xs height-xs   post-box-left"
-          style={{ aspectRatio: 1 }}
-        ></div>
+      { allUsers.find((user)=>user.username===currUser.username)?.profile_pic ===undefined ? <div
+              className="grey-bg br-full width-xs height-xs p-xs mr-xs currUser-box-left gen-btn"
+              style={{ aspectRatio: 1 }} data-dismiss="modal" onClick={()=>navigate(`/profile/${currUser.username}`)}
+            ></div>
+            :
+            <img src={`${allUsers.find((user)=>user.username===currUser.username).profile_pic}`} className=" br-full  currUser-box-left gen-btn"
+              style={{ aspectRatio: 1 }} data-dismiss="modal" onClick={()=>navigate(`/profile/${currUser.username}`)} />
+           }
         <div className="flex">
           <div className="grey-bg br-full width-xl height-xl"></div>
           <div className="flex flex-column ml-xs">
