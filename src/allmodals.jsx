@@ -51,12 +51,12 @@ try{
     <form onSubmit={handleSubmit(createPostHandler)}>
     <div className="white-bg  p-xs mt-s">
           <div className="flex flex-row nowrap p-xs">
-          { allUsers.find((user)=>user.username===currUser.username)?.profile_pic ===undefined ? <div
+          { allUsers?.find((user)=>user?.username===currUser?.username)?.profile_pic ===undefined ? <div
               className="grey-bg br-full width-xs height-xs p-xs mr-xs currUser-box-left gen-btn"
               style={{ aspectRatio: 1 }}
             ></div>
             :
-            <img src={`${allUsers.find((user)=>user.username===currUser.username).profile_pic}`} className=" br-full  currUser-box-left gen-btn"
+            <img src={`${allUsers.find((user)=>user?.username===currUser?.username)?.profile_pic}`} className=" br-full  currUser-box-left gen-btn"
               style={{ aspectRatio: 1 }}  />
            }
             <div className="w-full">
@@ -89,12 +89,12 @@ try{
     <div>
     <div className="white-bg  p-xs mt-s">
           <div className="flex flex-row nowrap p-xs">
-          { allUsers.find((user)=>user.username===currUser.username)?.profile_pic ===undefined ? <div
+          { allUsers.find((user)=>user?.username===currUser?.username)?.profile_pic ===undefined ? <div
               className="grey-bg br-full width-xs height-xs p-xs mr-xs currUser-box-left gen-btn"
               style={{ aspectRatio: 1 }}
             ></div>
             :
-            <img src={`${allUsers.find((user)=>user.username===currUser.username).profile_pic}`} className=" br-full  currUser-box-left gen-btn"
+            <img src={`${allUsers.find((user)=>user?.username===currUser?.username)?.profile_pic}`} className=" br-full  currUser-box-left gen-btn"
               style={{ aspectRatio: 1 }}  />
            }
             <div className="w-full">
@@ -104,7 +104,7 @@ try{
                 className="w-full lynx-white-bg p-s outline-transparent border-none"
                 style={{ resize: "none" }}
                 placeholder="Write something interesting..."
-                defaultValue={allPosts?.find((post)=>post._id===editPostId)?.content}
+                defaultValue={allPosts?.find((post)=>post?._id===editPostId)?.content}
               > </textarea>
               
             </div>
