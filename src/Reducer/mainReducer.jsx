@@ -28,12 +28,21 @@
                 ...state,allUsers:[...state.allUsers,payload]
             };
             case "update follow user":
-                console.log("payload",payload)
-                console.log("payloadopen", {...payload})
 
                 let tempusers = [...state.allUsers];
                 tempusers = tempusers.filter((temp)=>temp.username!==payload.user.username && temp.username!==payload.followUser.username)
-            return{...state,allUsers:[...tempusers,payload.user,payload.followUser]}
+            return{...state,allUsers:[...tempusers,payload.user,payload.followUser]};
+
+            case "editUser":
+
+                let tempusers1 = [...state.allUsers];
+                tempusers1 = tempusers1.filter((temp)=>temp.username!==payload.username)
+            return{...state,allUsers:[...tempusers1,payload]}
+            
+            
+            
+            
+            
             case "showstate":
                 console.log("statereducer 27",state);
 

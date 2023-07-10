@@ -54,7 +54,7 @@ import { formatDate } from "../utils/authUtils";
   lastName: "Raj",
   user_email: "shobhitraj34@gmail.com",
   username: "shobhitraj",
-  password: "shohehe",
+  password: "1",
   createdAt: formatDate(),
   updatedAt: formatDate(),
   profile_pic: "https://pbs.twimg.com/profile_images/1266934374060052480/O3nYz9s-_400x400.jpg",
@@ -386,8 +386,6 @@ import { formatDate } from "../utils/authUtils";
   createdAt: formatDate(),
   updatedAt: formatDate(),
   cover_pic: "",
-  portfoliourl: "https://davidwilson.com",
-  bio: "Graphic Designer",
   followers: [],
   following: [],
   bookmarks: []

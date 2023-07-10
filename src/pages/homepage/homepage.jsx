@@ -64,7 +64,7 @@ useEffect(() =>{getPostsData();getUsersData();fetchBookmarks(token)},[]);
           </div>
         </div>
         {/* {console.log("state@home",state)} */}
-        {allPosts?.filter((post)=>allUsers.find((user)=>user.username===currUser.username).following?.some((following)=>following?.username===post.username)).map((post)=>{return(<Post post={post} key={post._id}/>)})}
+        {allPosts?.filter((post)=>allUsers?.find((user)=>user?.username===currUser?.username)?.following?.some((following)=>following?.username===post?.username))?.map((post)=>{return(<Post post={post} key={post?._id}/>)})}
       </main>
        {<RightSideBar/>}
     </div>

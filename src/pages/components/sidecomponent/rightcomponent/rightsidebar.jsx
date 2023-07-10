@@ -23,31 +23,31 @@ export const RightSideBar = () =>{
             <div className="primary-color " type="button" data-toggle="modal" data-target="#showmore">Show More</div>
           </div>
           {allUsers.filter((user)=>user.username!==currUser.username)?.
-          filter((user)=>!allUsers.find((curr)=>curr.username===currUser.username).following.map((usr)=>usr.username).includes(user.username)).
+          filter((user)=>!allUsers?.find((curr)=>curr?.username===currUser?.username)?.following?.map((usr)=>usr.username)?.includes(user.username)).
           slice(0,5).
           map((user)=><FollowBox user1={user} key={user.username}/>)}          
         </div>
       
       {/* show who to follow modal */}
-        <div class="modal" id="showmore">
-    <div class="modal-dialog modal-dialog-scrollable modal-sm">
-      <div class="modal-content">
+        <div className="modal" id="showmore">
+    <div className="modal-dialog modal-dialog-scrollable modal-sm">
+      <div className="modal-content">
       
         {/* Modal Header */}
-        <div class="modal-header">
-          <h3 class="modal-title">Who to Follow?</h3>
+        <div className="modal-header">
+          <h3 className="modal-title">Who to Follow?</h3>
         </div>
         
          {/* Modal body */}
-        <div class="modal-body">
+        <div className="modal-body">
         {allUsers.filter((user)=>user.username!==currUser.username)?.
           filter((user)=>!allUsers.find((curr)=>curr.username===currUser.username).following.map((usr)=>usr.username).includes(user.username)).
           map((user)=><FollowBox user1={user} key={user.username}/>)}  
         </div>
         
         {/* Modal footer */}
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <div className="modal-footer">
+          <button type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
         </div>
         
       </div>

@@ -30,8 +30,6 @@ try{
       }
     }
   catch(err){console.log("Error",err); ToastHandler(ToastType.Error, `${err?.response?.data?.errors}`);}
-
-        reset();
     }
 
     const editPostHandler  = (data) => {
