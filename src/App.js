@@ -31,7 +31,7 @@ function App() {
 
   const RequiresAuth = ({children, isLoggedIn})=>{
      const location = useLocation();
-     return isLoggedIn ? children :( <Navigate to="/login"  state={{from:location}} />)
+     return isLoggedIn ? children :( <Navigate to="/"  state={{from:location}} />)
      
   }
 
