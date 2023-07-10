@@ -8,8 +8,8 @@ import { ToastType } from "./utils/constants";
 
 
 export const Modals = () =>{
-    const {token} = useAuth();
-    const {editPostId,allPosts,dispatch} = useData();
+    const {token,currUser} = useAuth();
+    const {editPostId,allPosts,dispatch,allUsers} = useData();
     let {register,handleSubmit,reset,setValue} = useForm(
         {
         defaultValues: {
@@ -51,9 +51,14 @@ try{
     <form onSubmit={handleSubmit(createPostHandler)}>
     <div className="white-bg  p-xs mt-s">
           <div className="flex flex-row nowrap p-xs">
-            <div
-              className="grey-bg br-full width-xl height-xl p-xs mr-xs create-box-left"style={{ aspectRatio: 1 }}>
-              </div>
+          { allUsers.find((user)=>user.username===currUser.username)?.profile_pic ===undefined ? <div
+              className="grey-bg br-full width-xs height-xs p-xs mr-xs currUser-box-left gen-btn"
+              style={{ aspectRatio: 1 }}
+            ></div>
+            :
+            <img src={`${allUsers.find((user)=>user.username===currUser.username).profile_pic}`} className=" br-full  currUser-box-left gen-btn"
+              style={{ aspectRatio: 1 }}  />
+           }
             <div className="w-full">
               <textarea type="text" name= "createpost" {...register('createpost')}
                 cols="70"
@@ -84,9 +89,14 @@ try{
     <div>
     <div className="white-bg  p-xs mt-s">
           <div className="flex flex-row nowrap p-xs">
-            <div
-              className="grey-bg br-full width-xl height-xl p-xs mr-xs create-box-left"style={{ aspectRatio: 1 }}>
-              </div>
+          { allUsers.find((user)=>user.username===currUser.username)?.profile_pic ===undefined ? <div
+              className="grey-bg br-full width-xs height-xs p-xs mr-xs currUser-box-left gen-btn"
+              style={{ aspectRatio: 1 }}
+            ></div>
+            :
+            <img src={`${allUsers.find((user)=>user.username===currUser.username).profile_pic}`} className=" br-full  currUser-box-left gen-btn"
+              style={{ aspectRatio: 1 }}  />
+           }
             <div className="w-full">
               <textarea type="text" name= "editpost" 
                 cols="70"
