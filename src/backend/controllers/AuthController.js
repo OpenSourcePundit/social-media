@@ -32,6 +32,7 @@ export const signupHandler = function (schema, request) {
 
     const newUser = {
       _id,
+      profile_pic:"",
       createdAt: formatDate(),
       updatedAt: formatDate(),
       username,
