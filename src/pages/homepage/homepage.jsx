@@ -18,7 +18,7 @@ import { useAuth } from "../../context/auth-context";
 
 export function HomePage() {
   const navigate = useNavigate();
-  const {allPosts,allUsers,getPostsData,getUsersData,fetchBookmarks,state,sortByTrending,sortByDate} = useData();
+  const {allPosts,allUsers,getPostsData,getUsersData,fetchBookmarks,state,sortByTrending,sortBy,setSortBy,sortPost} = useData();
   const {token,currUser} = useAuth();
 //   if(currUser){
 //     if(allUsers.some((usr)=>usr.username===currUser.username)){}
@@ -51,10 +51,10 @@ useEffect(() =>{getPostsData();getUsersData();fetchBookmarks(token)},[]);
               <i className="bi bi-funnel p-xs"></i>
             </button>
             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a className="dropdown-item" href="#" onClick={(e)=>{e.preventDefault();sortByTrending(allPosts)}}>
+              <a className="dropdown-item" href="#" onClick={(e)=>{setSortBy('trending')}}>
                 Sort By Trending
               </a>
-              <a className="dropdown-item" href="#" onClick={(e)=>{e.preventDefault();sortByDate(allPosts)}}>
+              <a className="dropdown-item" href="#" onClick={(e)=>{setSortBy('date')}}>
                 Sort By Date
               </a>
               
@@ -62,7 +62,7 @@ useEffect(() =>{getPostsData();getUsersData();fetchBookmarks(token)},[]);
           </div>
         </div>
         {/* {console.log("state@home",state)} */}
-        {allPosts?.filter((post)=>allUsers?.find((user)=>user?.username===currUser?.username)?.following?.some((following)=>following?.username===post?.username))?.map((post)=>{return(<Post post={post} key={post?._id}/>)})}
+        {sortPost( allPosts?.filter((post)=>allUsers?.find((user)=>user?.username===currUser?.username)?.following?.some((following)=>following?.username===post?.username)),sortBy)?.map((post)=>{return(<Post post={post} key={post?._id}/>)})}
       </main>
        {<RightSideBar/>}
     </div>

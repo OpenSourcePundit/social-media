@@ -23,7 +23,7 @@ export const RightSideBar = () =>{
             <div className="primary-color " type="button" data-toggle="modal" data-target="#showmore">Show More</div>
           </div>
           {allUsers.filter((user)=>user.username!==currUser.username)?.
-          filter((user)=>!allUsers?.find((curr)=>curr?.username===currUser?.username)?.following?.map((usr)=>usr.username)?.includes(user.username)).
+          filter((user)=>!allUsers?.find((curr)=>curr?.username===currUser?.username)?.following?.map((usr)=>usr.username)?.includes(user?.username)).
           slice(0,5).
           map((user)=><FollowBox user1={user} key={user.username}/>)}          
         </div>
@@ -40,9 +40,9 @@ export const RightSideBar = () =>{
         
          {/* Modal body */}
         <div className="modal-body">
-        {allUsers.filter((user)=>user.username!==currUser.username)?.
-          filter((user)=>!allUsers.find((curr)=>curr.username===currUser.username).following.map((usr)=>usr.username).includes(user.username)).
-          map((user)=><FollowBox user1={user} key={user.username}/>)}  
+        {allUsers.filter((user)=>user.username!==currUser?.username)?.
+          filter((user)=>!allUsers?.find((curr)=>curr?.username===currUser?.username)?.following?.map((usr)=>usr?.username)?.includes(user?.username))?.  
+                  map((user)=><FollowBox user1={user} key={user?.username}/>)}  
         </div>
         
         {/* Modal footer */}

@@ -11,7 +11,8 @@ const DataContext = createContext();
 const DataProvider = ({children}) =>{
 
     const {currUser,token} = useAuth();
-    const [editPostId,setEditPostId] = useState()
+    const [editPostId,setEditPostId] = useState();
+    const [sortBy,setSortBy] = useState();
     
     const initialState = {
         allPosts:[],
@@ -106,17 +107,27 @@ const DataProvider = ({children}) =>{
 }
 
   const sortByDate = (posts) => {
-    dispatch({
-        type:"get_all_posts",
-        payload: [...posts].sort((a,b)=>Date.parse(b.updatedAt) - Date.parse(a.updatedAt))
-    })
+    return([...posts].sort((a,b)=>Date.parse(b.createdAt) - Date.parse(a.createdAt))
+    )
   }
   const sortByTrending = (posts) => {
-    dispatch({
-        type:"get_all_posts",
-        payload: [...posts].sort((a,b)=>Date.parse(b.likes.likeCount) - Date.parse(a.likes.likeCount))
-    })
+    return([...posts].sort((a,b)=>Date.parse(b.likes.likeCount) - Date.parse(a.likes.likeCount))
+    )
   }
+
+  const sortPost = (posts,sortBy) => {
+    switch (sortBy){
+        case 'date':
+            return (sortByDate(posts));
+            break;
+        case 'trending':
+            return (sortByTrending(posts));
+            break;
+        default:
+            return ( posts);
+    }
+}
+
    
     return(
         <DataContext.Provider
@@ -137,6 +148,10 @@ const DataProvider = ({children}) =>{
             state:state,
             sortByDate,
             sortByTrending,
+            sortBy,
+            setSortBy,
+            sortPost,
+
          }}
         >
             {children}
