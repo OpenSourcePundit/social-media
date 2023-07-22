@@ -9,10 +9,10 @@ export const Navbar = () => {
       <div className="p-s pl-l txt-m  ">
         <h3>
           <span onClick={() => navigate("/home")} className="primary-color gen-btn">
-            My
+            Social
           </span>
           <span onClick={() => navigate("/home")} className="gen-btn">
-            Website
+            Circle
           </span>
         </h3>
       </div>

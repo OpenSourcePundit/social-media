@@ -22,7 +22,7 @@ export function SignUp(){
     return(
       <div className="flex flex-column flex-center h-full w-full">
       <h2 className="fw-black mb-m gen-btn " onClick={()=>{navigate("/")}}>
-        <span className="primary-color">My</span> Website
+        <span className="primary-color">Social</span> Circle
       </h2>
       <div className="white-bg br-m p-xxl pt-l pb-l" style={{ width: '30rem' }}>
         <h3 className="txt-center mb-s txt-l">Signup</h3>

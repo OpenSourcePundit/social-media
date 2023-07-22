@@ -22,7 +22,7 @@ export function Login(){
     return(
         <div className="flex flex-column flex-center h-full w-full">
       <h2 className="fw-black txt-xl mb-m gen-btn" onClick={()=>{navigate("/")}}>
-        <span className="primary-color">My</span> Website
+        <span className="primary-color">Social</span> Circle
       </h2>
       <div className="white-bg br-m p-xxl pt-xl pb-xl" style={{ width: '30rem' }}>
         <h3 className="txt-center mb-m txt-l">Login</h3>
