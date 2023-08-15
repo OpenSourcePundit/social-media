@@ -4,7 +4,7 @@ import { useAuth } from "../../../../context/auth-context"
 import { useData } from "../../../../context/data-context";
 export const FollowBox = ({user1}) =>{
 
-    const navigate = useNavigate();
+    const navigate = useNavigate(); 
 
     const {token,currUser} = useAuth();
     const {followUserHandler,allUsers,unfollowUserHandler} = useData();
@@ -24,7 +24,7 @@ export const FollowBox = ({user1}) =>{
         <div className="fw-light grey-color">@{user1.username}</div>
       </div>
     </div>
-    {allUsers.find((user) => user.username===currUser.username).following.some((usr)=>usr.username===user1.username)?
+    {allUsers.find((user) => user.username===currUser.username)?.following?.some((usr)=>usr.username===user1.username)?
     <div style={{borderRadius:"10px"}} className="primary-color  br-half  fw-bold follow-btn " onClick={()=>unfollowUserHandler(user1,token)}>
     <div>
       UnFollow

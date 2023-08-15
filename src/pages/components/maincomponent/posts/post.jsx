@@ -216,6 +216,10 @@ export const Post = ({ post }) => {
               </div>
             )}
           </div>
+          {post.pic && post.pic!=='' && <div className="post-image-section">
+            <img src={`${post?.pic}`} alt="" />
+            
+          </div>} 
           <p className="pr-s pt-xs post-main-section">{post?.content}</p>
           <div className="flex flex-row nowrap flex-space-between pb-xs pl-s pt-m pr-s flex-align-center post-onclick-section">
             <i

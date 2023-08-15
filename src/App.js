@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {Routes,Route,useLocation,Navigate} from "react-router-dom";
 
 
@@ -25,7 +26,7 @@ import { Modals } from "./allmodals";
 function App() {
   
   // const { loader } = useData();
-
+  const location = useLocation();
   const {isLoggedIn, } = useAuth();
   
 
@@ -34,6 +35,9 @@ function App() {
      return isLoggedIn ? children :( <Navigate to="/"  state={{from:location}} />)
      
   }
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
 
   return (
@@ -49,8 +53,16 @@ function App() {
         pauseOnFocusLoss
         draggable
       />
+
+{console.log("state",location?.state)}
        <Routes>
-          <Route path="/" element={<LandingPage/>}  />
+          {/* <Route path="/" element={<LandingPage/>}  /> */}
+          <Route path="/" element={isLoggedIn
+          ? (location?.state !== null)
+            ? <Navigate to={location?.state?.from?.pathname} />
+            : <Navigate to="/home" />
+          : <LandingPage/>} />
+
           <Route path="/login" element={ <Login/>}  />
           <Route path ="/signup" element={<SignUp/>} />
           <Route path="/home" element={<RequiresAuth isLoggedIn={isLoggedIn}><HomePage/></RequiresAuth>} />
