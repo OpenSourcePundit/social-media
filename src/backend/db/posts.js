@@ -989,6 +989,7 @@ export const posts =
   },
   {
     _id: uuid(),
+    pic: "https://www.thespruceeats.com/thmb/T_R22QniykdQ9aPCLKIk-O22Gh4=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/steamed-momos-wontons-1957616-hero-01-1c59e22bad0347daa8f0dfe12894bc3c.jpg",
     content:
       "At vero eos ees alias consequatur aut perferendis doloribus asperiores repellat.",
     likes: {
