@@ -17,3 +17,8 @@
   margin: .2rem;
   padding: .2rem;
 }
+.searchbox1{
+  width :70%;
+  justify-self: center;
+  align-self: center;
+}

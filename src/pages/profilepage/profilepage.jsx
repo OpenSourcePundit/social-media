@@ -31,7 +31,7 @@ export const ProfilePage = () =>{
             <Profile user={allUsers.find((user)=>user.username===username)}/>
             <div className="flex flex-space-between mr-xxl flex-align-center pt-s latest-post-heading">
               <h3 className="">{allUsers.find((usr)=>usr.username===username).name}'s Posts</h3>
-              <div className="dropdown">
+              {/* <div className="dropdown">
                 <button
                   className="btn btn-secondary dropdown-toggle"
                   type="button"
@@ -50,7 +50,7 @@ export const ProfilePage = () =>{
                 Sort By Date
               </a>
                 </div>
-              </div>
+              </div> */}
             </div>
             {allPosts.filter((post)=>post.username===username).map((post)=>{return(<Post post={post} key={post._id}/>)})}
           </main>

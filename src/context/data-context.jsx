@@ -12,13 +12,15 @@ const DataProvider = ({children}) =>{
 
     const {currUser,token} = useAuth();
     const [editPostId,setEditPostId] = useState();
-    const [sortBy,setSortBy] = useState();
+    const [sortBy,setSortBy] = useState('');
     
     const initialState = {
         allPosts:[],
         bookmarks:[],
         followedUsers:[],
         allUsers:[],
+        postSearch:'',
+        peopleSearch:'',
     }
 
     
@@ -117,10 +119,10 @@ const DataProvider = ({children}) =>{
 
   const sortPost = (posts,sortBy) => {
     switch (sortBy){
-        case 'date':
+        case 'Latest':
             return (sortByDate(posts));
             break;
-        case 'trending':
+        case 'Trending':
             return (sortByTrending(posts));
             break;
         default:
@@ -136,6 +138,9 @@ const DataProvider = ({children}) =>{
             bookmarks:state.bookmarks,
             allUsers:state.allUsers,
             followedUsers:state.followeedUsers,
+            postSearch:state.postSearch,
+            peopleSearch:state.peopleSearch,
+
             dispatch:dispatch,
             getUsersData,
             followUserHandler,

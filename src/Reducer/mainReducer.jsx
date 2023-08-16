@@ -1,15 +1,7 @@
  export const mainReducer = (state,{type,payload}) =>{
 
     switch(type){
-            case "Add_Category":
-            //return  {...state, category:{...state.category,  payload}};
-            return  {
-                ...state, category:[...state.category,  ...payload]
-            };      
-            case "Add_Product":
-            return{
-                ...state, products:[...state.products, ...payload]
-            };
+            
             case "get_all_posts":             
             return{
                 ...state,allPosts:[...payload]
@@ -38,6 +30,12 @@
                 let tempusers1 = [...state.allUsers];
                 tempusers1 = tempusers1.filter((temp)=>temp.username!==payload.username)
             return{...state,allUsers:[...tempusers1,payload]}
+
+            case "peoplesearch":
+                return{...state,peopleSearch: payload}
+
+            case "postsearch":
+                return{...state,postSearch: payload}
             
             
             

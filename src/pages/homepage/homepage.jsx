@@ -38,7 +38,7 @@ useEffect(() =>{getPostsData();getUsersData();fetchBookmarks(token)},[]);
         {/* <Profile/> */}
         {/* <CreatePost/> */}
         <div className="flex flex-space-between mr-xxl flex-align-center pt-s latest-post-heading">
-          <h3 className="">Latest Posts</h3>
+          <h3 className="">{`${sortBy}`} Posts</h3>
           <div className="dropdown">
             <button
               className="btn btn-secondary dropdown-toggle"
@@ -51,10 +51,10 @@ useEffect(() =>{getPostsData();getUsersData();fetchBookmarks(token)},[]);
               <i className="bi bi-funnel p-xs"></i>
             </button>
             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a className="dropdown-item" href="#" onClick={(e)=>{setSortBy('trending')}}>
+              <a className="dropdown-item" href="#" onClick={(e)=>{setSortBy('Trending')}}>
                 Sort By Trending
               </a>
-              <a className="dropdown-item" href="#" onClick={(e)=>{setSortBy('date')}}>
+              <a className="dropdown-item" href="#" onClick={(e)=>{setSortBy('Latest')}}>
                 Sort By Date
               </a>
               

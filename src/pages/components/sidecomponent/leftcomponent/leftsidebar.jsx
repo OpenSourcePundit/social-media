@@ -57,7 +57,7 @@ export const LeftSideBar = () => {
       </div>
       <div className="flex flex-space-between white-bg  username-box">
       { allUsers.find((user)=>user.username===currUser.username)?.profile_pic ===undefined ? <div
-              className="grey-bg br-full width-xs height-xs p-xs mr-xs currUser-box gen-btn"
+              className="grey-bg br-full width-auto height-xs p-xs mr-xs currUser-box gen-btn"
               style={{ aspectRatio: 1 }} data-dismiss="modal" onClick={()=>navigate(`/profile/${currUser.username}`)}
             ></div>
             :

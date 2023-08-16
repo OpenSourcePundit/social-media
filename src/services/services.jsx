@@ -19,7 +19,7 @@ export const CreatePost = async ({ content, encodedToken }) => {
   console.log("createpostcontent@services",content)
   return axios.post(
     "/api/posts/",
-    { postData:{content}},
+    { postData:{...content}},
     { headers: { authorization: encodedToken } }
   );
 };

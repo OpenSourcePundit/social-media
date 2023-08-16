@@ -17,7 +17,7 @@ import { useAuth } from "../../context/auth-context";
 
 export function ExplorePage() {
   const navigate = useNavigate();
-  const {allPosts,allUsers,getPostsData,getUsersData,fetchBookmarks,setSortBy,sortPost,sortBy} = useData();
+  const {allPosts,allUsers,getPostsData,getUsersData,fetchBookmarks,setSortBy,sortPost,sortBy,postSearch,dispatch} = useData();
   const {token} = useAuth();
 //   if(currUser){
 //     if(allUsers.some((usr)=>usr.username===currUser.username)){}
@@ -34,8 +34,15 @@ useEffect(() =>{getPostsData();getUsersData();fetchBookmarks(token)},[]);
       <Navbar />
       <LeftSideBar />   
       <main className="main">
+      <div className="white-bg mb-m  border flex flex-row flex-center nowrap searchbox1">
+          <i className="bi bi-search"></i>
+          <input type="search" name="search-bar" value={postSearch} className="search-bar border-none outline-transparent p-xs width-19 " placeholder="Search Posts" onChange={(e)=>dispatch({type:"postsearch",payload:e.target.value})} />
+        </div>
+
+
         <div className="flex flex-space-between mr-xxl flex-align-center pt-s latest-post-heading">
-          <h3 className="">Latest Posts</h3>
+          
+          <h3 className="">{postSearch ===""?`Explore ${sortBy} Posts`:`Search Results  ${sortBy}`}</h3>
           <div className="dropdown">
             <button
               className="btn btn-secondary dropdown-toggle"
@@ -48,19 +55,21 @@ useEffect(() =>{getPostsData();getUsersData();fetchBookmarks(token)},[]);
               <i className="bi bi-funnel p-xs"></i>
             </button>
             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a className="dropdown-item" href="#" onClick={(e)=>{setSortBy('trending')}}>
+            <a className="dropdown-item" onClick={(e)=>{setSortBy('Trending')}}>
                 Sort By Trending
               </a>
-              <a className="dropdown-item" href="#" onClick={(e)=>{setSortBy('date')}}>
+              <a className="dropdown-item" onClick={(e)=>{setSortBy('Latest')}}>
                 Sort By Date
               </a>
             </div>
           </div>
         </div>
-        {sortPost(allPosts,sortBy).
-        map((post)=>{return(<Post post={post} key={post._id}/>)})}
-        {/* {<Post/>}
-        {<Post/>} */}
+        {allPosts.filter((post)=>{return(post.username.toLowerCase().includes(postSearch.toLowerCase()) || post.username.toLowerCase().includes(postSearch.toLowerCase()))}).length !==0 ?
+        
+        
+        sortPost(allPosts.filter((post)=>{return(post.username.toLowerCase().includes(postSearch.toLowerCase()) || post.username.toLowerCase().includes(postSearch.toLowerCase()))}),sortBy).
+        map((post)=>{return(<Post post={post} key={post._id}/>)}): `No posts to Show`}
+       
       </main>
        {<RightSideBar/>}
     </div>
