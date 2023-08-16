@@ -16,7 +16,7 @@ export const GetAllUserPost = async ({ username }) =>
   axios.get(`/api/posts/user/${username}`);
 
 export const CreatePost = async ({ content, encodedToken }) => {
-  console.log("createpostcontent@services",content)
+  
   return axios.post(
     "/api/posts/",
     { postData:{...content}},
@@ -27,7 +27,7 @@ export const CreatePost = async ({ content, encodedToken }) => {
 export const EditPost = async ({ encodedToken, postData, postId }) => {
   return axios.post(
     `/api/posts/edit/${postId}`,
-    { postData },
+    { postData:{...postData} },
     { headers: { authorization: encodedToken } }
   );
 };

@@ -53,8 +53,6 @@ function App() {
         pauseOnFocusLoss
         draggable
       />
-
-{console.log("state",location?.state)}
        <Routes>
           {/* <Route path="/" element={<LandingPage/>}  /> */}
           <Route path="/" element={isLoggedIn

@@ -20,12 +20,10 @@ export const ProfilePage = () =>{
     const {allPosts,allUsers,getPostsData,getUsersData,fetchBookmarks,state,sortByTrending,sortByDate} = useData();
     const {token,currUser} = useAuth();
     const {username} = useParams();
-    console.log(username);
 
     return (
         <div className="container">
           <Navbar />
-          {console.log("state",state)}
           <LeftSideBar />   
           <main className="main">
             <Profile user={allUsers.find((user)=>user.username===username)}/>

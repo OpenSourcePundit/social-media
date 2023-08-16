@@ -13,6 +13,14 @@ const DataProvider = ({children}) =>{
     const {currUser,token} = useAuth();
     const [editPostId,setEditPostId] = useState();
     const [sortBy,setSortBy] = useState('');
+    const [editpostInput, setEditPostInput] = useState({
+        content: "",
+        pic: "",
+      });
+      const [postInput, setPostInput] = useState({
+        content:"",
+        pic:"",
+      });
     
     const initialState = {
         allPosts:[],
@@ -156,6 +164,10 @@ const DataProvider = ({children}) =>{
             sortBy,
             setSortBy,
             sortPost,
+            editpostInput,
+            setEditPostInput,
+            postInput, 
+            setPostInput
 
          }}
         >

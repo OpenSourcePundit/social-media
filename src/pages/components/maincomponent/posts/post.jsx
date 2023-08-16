@@ -1,5 +1,5 @@
 import "./post.css";
-import { React } from "react";
+import { React, useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useData } from "../../../../context/data-context";
 import { useAuth } from "../../../../context/auth-context";
@@ -8,16 +8,44 @@ import {
   BookmarkPost,
   LikePost,
   DislikePost,
-  DeletePost,
+  DeletePost,EditPost
 } from "../../../../services/services";
 import { ToastHandler } from "../../../../utils/utils";
 import { ToastType } from "../../../../utils/constants";
-import { Modals } from "../../../../allmodals";
+// import { Modals } from "../../../../allmodals";
 
 export const Post = ({ post }) => {
   const navigate = useNavigate();
+
+  // const [editpostInput, setEditPostInput] = useState({
+  //   content: "",
+  //   pic: "",
+  // });
+
+  const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+
+  const handleUpload1 = async (event) => {
+    const file = event.target.files[0];
+   
+    const base641 = await convertBase64(file);
+    setEditPostInput((prev) => ({ ...prev, pic: base641 }));
+   
+  };
+
   const { token, currUser } = useAuth();
-  const { allUsers, bookmarks, dispatch, setEditPostId } = useData();
+  const { allUsers, bookmarks, dispatch, setEditPostId, allPosts, editPostId,editpostInput, setEditPostInput } =
+    useData();
   // console.log("state",state,"curruser",currUser)
   const fetchUserName = (username) => {
     return allUsers?.find((user) => user.username === username).name;
@@ -48,6 +76,29 @@ export const Post = ({ post }) => {
       ToastHandler(ToastType.Error, `${err?.response?.data?.message}`);
     }
   };
+
+  const editPostHandler = async(editpostInput,id) =>{
+    try {
+      const {
+        data: { posts },
+        status,
+      } = await EditPost({ encodedToken: token,postData:{...editpostInput} ,postId: id });
+      if (status === 201) {
+        ToastHandler(ToastType.Success, " Post Updated !");
+        dispatch({
+          type: "get_all_posts",
+          payload: posts,
+        });
+      }
+    } catch (err) {
+      console.log("Error", err);
+      ToastHandler(ToastType.Error, `${err?.response?.data?.message}`);
+    }
+
+  }
+
+
+
   const deleteBookmark = async (token, id) => {
     try {
       const {
@@ -142,7 +193,7 @@ export const Post = ({ post }) => {
   return (
     <div className="white-bg mr-xxl rounded p-xs mt-s post-box">
       <div className="flex flex-row nowrap p-xs">
-        <Modals />
+        
 
         {/* <img src={`${allUsers.find((user)=>user.username===post.username).profile_pic}`} className=" br-full width-xs height-xs p-xs mr-xs post-box-left gen-btn"
               style={{ aspectRatio: 1 }} onClick={()=>navigate(`/profile/${post.username}`)} /> */}
@@ -199,10 +250,15 @@ export const Post = ({ post }) => {
                 >
                   <button
                     className="dropdown-item"
+                    onClick={() =>
+                      setEditPostInput({
+                        content: `${post.content}`,
+                        pic: `${post.pic}`,
+                      })
+                    }
                     type="button"
                     data-toggle="modal"
-                    data-target="#EditPostModal"
-                    onClick={() => setEditPostId(`${post._id}`)}
+                    data-target={`#EditPostModal${post._id}`}
                   >
                     Edit Post
                   </button>
@@ -216,10 +272,11 @@ export const Post = ({ post }) => {
               </div>
             )}
           </div>
-          {post.pic && post.pic!=='' && <div className="post-image-section">
-            <img src={`${post?.pic}`} alt="" />
-            
-          </div>} 
+          {post.pic && post.pic !== "" && (
+            <div className="post-image-section">
+              <img src={`${post?.pic}`} alt="" />
+            </div>
+          )}
           <p className="pr-s pt-xs post-main-section">{post?.content}</p>
           <div className="flex flex-row nowrap flex-space-between pb-xs pl-s pt-m pr-s flex-align-center post-onclick-section">
             <i
@@ -248,6 +305,129 @@ export const Post = ({ post }) => {
           </div>
         </div>
       </div>
+
+      <>
+        {/* edit post modal */}
+        <div
+          className="modal fade"
+          id={`EditPostModal${post._id}`}
+          tabIndex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div>
+                <div className="white-bg  p-xs mt-s">
+                  <div className="flex flex-row nowrap p-xs">
+                    {allUsers.find(
+                      (user) => user?.username === currUser?.username
+                    )?.profile_pic === undefined ? (
+                      <div
+                        className="grey-bg br-full width-xs height-xs p-xs mr-xs currUser-box-left gen-btn"
+                        style={{ aspectRatio: 1 }}
+                      ></div>
+                    ) : (
+                      <img
+                        src={`${
+                          allUsers.find(
+                            (user) => user?.username === currUser?.username
+                          )?.profile_pic
+                        }`}
+                        className=" br-full  currUser-box-left gen-btn"
+                        style={{ aspectRatio: 1 }}
+                      />
+                    )}
+                    <div className="w-full">
+                      <textarea
+                        type="text"
+                        name="editpost"
+                        cols="70"
+                        rows="6"
+                        className="w-full lynx-white-bg p-s outline-transparent border-none"
+                        style={{ resize: "none" }}
+                        placeholder="Write something interesting..."
+                        onChange={(e) =>
+                          setEditPostInput((prev) => ({
+                            ...prev,
+                            content: e.target.value,
+                          }))
+                        }
+                        value={editpostInput?.content}
+                      >
+                        {" "}
+                      </textarea>
+                    </div>
+                  </div>
+
+                  <div className="select-Image-container">
+                    <label
+                      className="image-btn flex"
+                      htmlFor="upload1"
+                      style={{ justifyContent: "left" }}
+                    >
+                      <i class="bi bi-image-fill"></i>
+                      <input
+                        type="file"
+                        id="upload1"
+                        style={{ display: "none" }}
+                        onChange={(event) => { 
+                          handleUpload1(event);
+                        }}
+                        accept="image/apng, image/avif, image/gif, image/jpeg, image/png, image/svg+xml, image/jpg,image/webp"
+                      />
+
+                      {editpostInput.pic && (
+                        <div className="modal-image-container">
+                          <img
+                            className="modal-image"
+                            style={{ width: "130px", height: "90px" }}
+                            src={editpostInput.pic}
+                            alt="Post image"
+                          />
+                          <span className="modal-image-cancel">
+                            {
+                              <i
+                                class="bi bi-x-circle"
+                                onClick={() =>
+                                  setEditPostInput((prev) => ({
+                                    ...prev,
+                                    pic: "",
+                                  }))
+                                }
+                              ></i>
+                            }
+                          </span>
+                        </div>
+                      )}
+                    </label>
+                  </div>
+                </div>
+               
+                <div className="modal-footer">
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="submit"
+                    className="btn btn-primary primary primary-bg"
+                    data-toggle="modal"
+                    data-target={`#EditPostModal${post._id}`}
+                    onClick={()=>editPostHandler(editpostInput,post._id)}
+                  >
+                    Save Post
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
     </div>
   );
 };
