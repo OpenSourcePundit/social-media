@@ -65,7 +65,6 @@ export const posts =
   {
     _id: "1",
     content: "RajSphere is the best app 🎉",
-    pic: "",
     username: "shobhitraj",
     postedBy: {
       _id: "1",
