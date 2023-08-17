@@ -378,7 +378,7 @@ export const Post = ({ post }) => {
                         accept="image/apng, image/avif, image/gif, image/jpeg, image/png, image/svg+xml, image/jpg,image/webp"
                       />
 
-                      {editpostInput.pic && (
+                      {editpostInput.pic !=='' && (
                         <div className="modal-image-container">
                           <img
                             className="modal-image"
