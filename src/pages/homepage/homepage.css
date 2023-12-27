@@ -7,7 +7,7 @@
     width: 100%;
       max-width:100% ; 
     grid-gap: 1rem;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 3fr 1fr;
     grid-template-rows: 1fr 10fr;
     grid-template-areas:
       "header header header"
@@ -21,14 +21,14 @@
   
   .sidebar1 {
     grid-area: aside1;
-    width: max-content;
+    width: 100%;
     background-color: lynx-gray-color;
   }
   
   .sidebar2 {
     grid-area: aside2;
     min-height: 200px;
-    height: max-content;
+    height: 100%;
   }
   
  main {
@@ -37,6 +37,50 @@
     padding-left: .5rem;
   }
 
+  @media screen and (max-width:1200px) {
+    
+    .container{
+      grid-template-columns: 2fr 10fr 2fr;
+    }
+  }
 
+  @media screen and (max-width:950px) {
+    
+    .container{
+      grid-template-columns: 2fr 12fr ;
+      grid-template-areas:
+      "header header "
+      "aside1 main ";
+    }
+    .sidebar2{
+      display: none;
+    }
+    main{
+      padding-right: 24px;
+    }
+  }
 
+  @media screen and (max-width:768px) {
+    
+    .container{
+      grid-template-columns: 1fr ;
+      grid-template-areas:
+      "header "
+      "main ";
+    }
+    .sidebar1{
+      background-color: aqua;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 20;
+    }
+    .nav-wrapper{
+      flex-direction: row;
+
+    }
+
+    
+  }
+ 
 

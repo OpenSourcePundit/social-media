@@ -27,7 +27,7 @@ export const ProfilePage = () =>{
           <LeftSideBar />   
           <main className="main">
             <Profile user={allUsers.find((user)=>user.username===username)}/>
-            <div className="flex flex-space-between mr-xxl flex-align-center pt-s latest-post-heading">
+            <div className="flex flex-space-between m-auto flex-align-center pt-s latest-post-heading">
               <h3 className="">{allUsers.find((usr)=>usr.username===username).name}'s Posts</h3>
               {/* <div className="dropdown">
                 <button

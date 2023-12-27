@@ -23,7 +23,7 @@ export function Bookmarks() {
         <LeftSideBar />
         
         <main className="main">
-        <div className="flex flex-space-between mr-xxl flex-align-center pt-s latest-post-heading">
+        <div className="flex flex-space-between m-auto flex-align-center pt-s latest-post-heading">
             <h3 className="">BookMarks</h3>            
         </div>
           { bookmarks?.length !== 0 ?          

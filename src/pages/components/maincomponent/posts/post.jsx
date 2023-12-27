@@ -191,7 +191,7 @@ export const Post = ({ post }) => {
   };
 
   return (
-    <div className="white-bg mr-xxl rounded p-xs mt-s post-box">
+    <div className="white-bg m-auto rounded p-xs mt-s post-box">
       <div className="flex flex-row nowrap p-xs">
         
 
