@@ -1,0 +1,10 @@
+
+/* .social-circle-landing-image{
+    height: 70vh;
+    width: 30rem;
+} */
+@media screen and (max-width:1040px) {
+    .social-circle-landing-image{
+        display: none;
+    }
+}
