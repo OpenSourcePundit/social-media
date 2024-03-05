@@ -18,12 +18,11 @@ export function Bookmarks() {
   
     return(
         <div className="container">
-        <Navbar />        
-        
+        <Navbar />          
         <LeftSideBar />
         
         <main className="main">
-        <div className="flex flex-space-between m-auto flex-align-center pt-s latest-post-heading">
+        <div className="flex flex-space-between p-s flex-align-center flex-justify-center pt-s latest-post-heading">
             <h3 className="">BookMarks</h3>            
         </div>
           { bookmarks?.length !== 0 ?          

@@ -34,15 +34,16 @@ useEffect(() =>{getPostsData();getUsersData();fetchBookmarks(token)},[]);
       <Navbar />
       <LeftSideBar />   
       <main className="main">
-      <div className="white-bg mb-m  border flex flex-row flex-center nowrap searchbox1">
-          <i className="bi bi-search"></i>
-          <input type="search" name="search-bar" value={postSearch} className="search-bar border-none outline-transparent p-xs width-19 " placeholder="Search Posts" onChange={(e)=>dispatch({type:"postsearch",payload:e.target.value})} />
-        </div>
+     
 
 
-        <div className="flex flex-space-between mr-xxl flex-align-center pt-s latest-post-heading">
+        <div className="flex flex-space-between p-s flex-align-center flex-justify-center pt-s latest-post-heading">
           
-          <h3 className="">{postSearch ===""?`Explore ${sortBy} Posts`:`Search Results  ${sortBy}`}</h3>
+          <h3 style={{font: "8vw"}} className="">{postSearch ===""?`Explore ${sortBy} Posts`:`Search Results  ${sortBy}`}</h3>
+          <div className="white-bg mr-s ml-s border flex flex-row flex-center nowrap searchbox1">
+          <i className="bi bi-search p-s"></i>
+          <input type="search" name="search-bar" value={postSearch} className="search-bar w-100 border-none outline-transparent p-xs width-19 " placeholder="Search Posts" onChange={(e)=>dispatch({type:"postsearch",payload:e.target.value})} />
+        </div>
           <div className="dropdown">
             <button
               className="btn btn-secondary dropdown-toggle"

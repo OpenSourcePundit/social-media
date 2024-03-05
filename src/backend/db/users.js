@@ -57,7 +57,7 @@ import { formatDate } from "../utils/authUtils";
   password: "1",
   createdAt: formatDate(),
   updatedAt: formatDate(),
-  profile_pic: "https://pbs.twimg.com/profile_images/1266934374060052480/O3nYz9s-_400x400.jpg",
+  profile_pic: "https://staticg.sportskeeda.com/editor/2022/07/c2ed4-16587439752781.png",
   cover_pic: "https://pbs.twimg.com/profile_banners/822058153051295745/1678301248/1500x500",
   portfoliourl: "https://github.com/shobhit-28/",
   bio: "Software Developer",

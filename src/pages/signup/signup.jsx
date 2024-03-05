@@ -11,7 +11,7 @@ export function SignUp(){
   const form = useForm();
   const{register,handleSubmit,watch,formState} = form;
   const {errors} = formState;
-  const {signupHandler} = useAuth();
+  const {signupHandler,loginHandler} = useAuth();
 
   const submitHandler = ({name, username, password,email}) =>{
     console.log("email",email,"name",name,"username",username,"password",password);
@@ -102,6 +102,7 @@ export function SignUp(){
             </label>
           </div>
         </div>
+       
         <button type="submit" className="w-full primary-bg white-color p-s outline-transparent border-none pt-xs pb-xs txt-s">
           Create New Account
         </button>
@@ -109,7 +110,11 @@ export function SignUp(){
         <p className="txt-center w-full mt-m" style={{ display: 'block',cursor:"pointer" }}onClick={()=>navigate("/login")}>
           Already have an account ?
         </p>
+        <button className="pl-xs primary-bg white-color p-s outline-transparent border-none pt-xs pb-xs txt-s " onClick={()=>loginHandler("adarshbalika","1")}>
+              Login As Test User
+            </button>
       </div>
+      
     </div>
     )
     }
