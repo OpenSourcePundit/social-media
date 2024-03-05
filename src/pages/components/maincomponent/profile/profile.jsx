@@ -8,7 +8,7 @@ import "./profile.css";
 import { FollowBox } from "../../sidecomponent/rightcomponent/singlefollowbox";
 
 export const Profile = ({ user }) => {
-  const { currUser, token } = useAuth();
+  const { currUser, token,logoutHandler} = useAuth();
   const {
     allPosts,
     allUsers,
@@ -72,6 +72,7 @@ export const Profile = ({ user }) => {
       <p className="grey-color txt-s">@{user.username}</p>
 
       {user.username === currUser.username ? (
+        <div className="">
         <button
           className="border lynx-white-bg p-xs m-xs fw-semibold width-8"
           type="button"
@@ -80,6 +81,13 @@ export const Profile = ({ user }) => {
         >
           Edit Profile
         </button>
+        <button        
+        className="border lynx-white-bg p-xs m-xs fw-semibold width-8"
+        onClick={() => logoutHandler()}
+      >
+        LogOut
+      </button>
+        </div>
       ) : allUsers
           .find((user) => user.username === currUser.username)
           .following.some(

@@ -14,12 +14,15 @@
       "aside1 main aside2";
 
   }
+
   
   nav {
     grid-area: header;
   }
   
+ 
   .sidebar1 {
+    padding-left: 1.5rem ;
     grid-area: aside1;
     width: 100%;
     background-color: lynx-gray-color;
@@ -42,6 +45,9 @@
     .container{
       grid-template-columns: 2fr 10fr 2fr;
     }
+    .username-box{
+      display: none;
+    }
   }
 
   @media screen and (max-width:950px) {
@@ -52,6 +58,9 @@
       "header header "
       "aside1 main ";
     }
+    .username-box{
+      display: none;
+    }
     .sidebar2{
       display: none;
     }
@@ -59,26 +68,46 @@
       padding-right: 24px;
     }
   }
-
+  
   @media screen and (max-width:768px) {
     
     .container{
-      grid-template-columns: 1fr ;
+      /* justify-content: center; */
+      grid-template-columns: 1fr !important;
       grid-template-areas:
       "header "
       "main ";
     }
+    main{
+      width: 100%;      
+    }
     .sidebar1{
-      background-color: aqua;
-      position: absolute;
+      padding-left: 0;
+      position: fixed;
       bottom: 0;
       left: 0;
-      z-index: 20;
+      z-index: 20;      
+      align-items: center;
+      justify-content:space-around
+    }
+    .left-side-bar-wrapper {
+      flex-direction: row;
     }
     .nav-wrapper{
-      flex-direction: row;
-
+      flex-direction: row !important;
+      align-items: center;
+      width: 100%;
     }
+    .new-post-btn-2{
+      width: 10%;
+    }
+    .username-box{
+      display: none;
+    }
+    .link-wrap{
+      padding: 5px;
+    }
+
 
     
   }

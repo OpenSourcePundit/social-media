@@ -10,7 +10,7 @@ export const LeftSideBar = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="  pl-l flex flex-column  sidebar sidebar1">
+    <div className=" sidebar sidebar1">
       <div className="flex flex-column flex-space-between nav-wrapper bg-white rounded">
         <div className="pt-s black-color fw-semibold link-wrap">
           <Link className="link" to="../home">
@@ -58,13 +58,13 @@ export const LeftSideBar = () => {
           type="button"
           data-toggle="modal"
           data-target="#CreateNewPostModal"
-          className="m-m fw-bolder p-s w-20 primary-bg br-full  white-color border-none f-xxl outline-transparent new-post-btn-2"
+          className="m-m fw-bolder p-xs w-10 primary-bg br-full  white-color border-none f-xxl outline-transparent new-post-btn-2"
           
         >
           +
         </button>
       </div>
-      <div className="flex flex-space-between white-bg  username-box">
+      <div className="flex flex-space-between white-bg w-auto  username-box">
       { allUsers.find((user)=>user.username===currUser.username)?.profile_pic ===undefined ? <div
               className="grey-bg br-full width-auto height-xs p-xs mr-xs currUser-box gen-btn"
               style={{ aspectRatio: 1 }} data-dismiss="modal" onClick={()=>navigate(`/profile/${currUser.username}`)}
