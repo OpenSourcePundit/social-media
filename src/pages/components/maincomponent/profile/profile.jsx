@@ -18,8 +18,6 @@ export const Profile = ({ user }) => {
   } = useData();
   const [editUser, setEditUser] = useState({
     username: allUsers?.find((user) => user.username === currUser?.username)
-      ?.profile_pic,
-    username: allUsers?.find((user) => user.username === currUser?.username)
       ?.username,
     profile_pic: allUsers?.find((user) => user.username === currUser?.username)
       ?.profile_pic,
@@ -61,7 +59,7 @@ export const Profile = ({ user }) => {
           src={`${
             allUsers.find((userp) => userp.username === user.username)
               .profile_pic
-          }`}
+          }`} alt="profilepic"
           className=" width-10 height-10 br-full profile-pic"
           style={{ aspectRatio: 1 }}
         />
@@ -221,22 +219,22 @@ export const Profile = ({ user }) => {
                   <img
                     src={`${editUser?.profile_pic}`}
                     className=" width-10 height-10 br-full profile-pic"
-                    style={{ aspectRatio: 1 }}
+                    style={{ aspectRatio: 1 }} alt="profilepic"
                   />
                 )}
                 <div className="avatar">
                 <img src={`https://i.ibb.co/qBTXTm6/7309670.jpg`} value="https://i.ibb.co/qBTXTm6/7309670.jpg" className=" br-full  user1-box-left gen-btn"
-              style={{ aspectRatio: 1 }} onClick={(e) => {setEditUser({ ...editUser, profile_pic: e.target.src });}}/>
+              style={{ aspectRatio: 1 }} alt="profilepic" onClick={(e) => {setEditUser({ ...editUser, profile_pic: e.target.src });}}/>
               <img src={`https://i.ibb.co/HNnywVG/7294794.jpg`} value="https://i.ibb.co/HNnywVG/7294794.jpg" className=" br-full  user1-box-left gen-btn"
-              style={{ aspectRatio: 1 }} onClick={(e) => {setEditUser({ ...editUser, profile_pic: e.target.src });}}/>
+              style={{ aspectRatio: 1 }} alt="profilepic" onClick={(e) => {setEditUser({ ...editUser, profile_pic: e.target.src });}}/>
               <img src={`https://i.ibb.co/K7SbmTX/7309667.jpg`} value="https://i.ibb.co/K7SbmTX/7309667.jpg" className=" br-full  user1-box-left gen-btn"
-              style={{ aspectRatio: 1 }} onClick={(e) => {setEditUser({ ...editUser, profile_pic: e.target.src });}}/>
+              style={{ aspectRatio: 1 }} alt="profilepic" onClick={(e) => {setEditUser({ ...editUser, profile_pic: e.target.src });}}/>
               <img src={`https://i.ibb.co/1vGzhyY/7309683.jpg`} value="https://i.ibb.co/1vGzhyY/7309683.jpg" className=" br-full  user1-box-left gen-btn"
-              style={{ aspectRatio: 1 }} onClick={(e) => {setEditUser({ ...editUser, profile_pic: e.target.src });}}/>
+              style={{ aspectRatio: 1 }} alt="profilepic" onClick={(e) => {setEditUser({ ...editUser, profile_pic: e.target.src });}}/>
               <img src={`https://i.ibb.co/GCnpvDB/7342052.jpg`} value="https://i.ibb.co/GCnpvDB/7342052.jpg" className=" br-full  user1-box-left gen-btn"
-              style={{ aspectRatio: 1 }} onClick={(e) => {setEditUser({ ...editUser, profile_pic: e.target.src });}}/>
+              style={{ aspectRatio: 1 }} alt="profilepic" onClick={(e) => {setEditUser({ ...editUser, profile_pic: e.target.src });}}/>
               <img src={`https://i.ibb.co/HgQ8PSx/4300-3-11.jpg`} value="https://i.ibb.co/HgQ8PSx/4300-3-11.jpg" className=" br-full  user1-box-left gen-btn"
-              style={{ aspectRatio: 1 }} onClick={(e) => {setEditUser({ ...editUser, profile_pic: e.target.src });}}/>
+              style={{ aspectRatio: 1 }} alt="profilepic" onClick={(e) => {setEditUser({ ...editUser, profile_pic: e.target.src });}}/>
                 </div>
 
                 </div>

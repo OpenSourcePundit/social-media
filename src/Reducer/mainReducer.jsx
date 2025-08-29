@@ -43,6 +43,7 @@
             
             case "showstate":
                 console.log("statereducer 27",state);
+                return state;
 
         default: 
             return state;

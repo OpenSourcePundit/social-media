@@ -2,23 +2,23 @@ import {React,useEffect} from "react";
 import "./../../base.css";
 import "./../../utility.css";
 import "./homepage.css";
-import { useNavigate, Link } from "react-router-dom";
-import bootstrap from "bootstrap";
+// import { useNavigate, Link } from "react-router-dom";
+// import bootstrap from "bootstrap";
 
 import { Navbar } from "../components/nav";
 import { LeftSideBar } from "../components/sidecomponent/leftcomponent/leftsidebar";
 import { Post } from "../components/maincomponent/posts/post";
-import { CreatePost } from "../components/maincomponent/createpost/createpost";
+// import { CreatePost } from "../components/maincomponent/createpost/createpost";
 // import { Profile } from "../components/maincomponent/profile/profile";
 import { RightSideBar } from "../components/sidecomponent/rightcomponent/rightsidebar";
-import { Modals } from "../../allmodals";
+// import { Modals } from "../../allmodals";
 
 import { useData } from "../../context/data-context";
 import { useAuth } from "../../context/auth-context";
 
 export function HomePage() {
-  const navigate = useNavigate();
-  const {allPosts,allUsers,getPostsData,getUsersData,fetchBookmarks,state,sortByTrending,sortBy,setSortBy,sortPost} = useData();
+  // const navigate = useNavigate();
+  const {allPosts,allUsers,getPostsData,getUsersData,fetchBookmarks,sortBy,setSortBy,sortPost} = useData();
   const {token,currUser} = useAuth();
 //   if(currUser){
 //     if(allUsers.some((usr)=>usr.username===currUser.username)){}
@@ -29,7 +29,7 @@ export function HomePage() {
 //      })
 //     }
 // }
-useEffect(() =>{getPostsData();getUsersData();fetchBookmarks(token)},[]);
+useEffect(() =>{getPostsData();getUsersData();fetchBookmarks(token)},[fetchBookmarks,getPostsData,getUsersData,token]);
   return (
     <div className="container">
       <Navbar />

@@ -1,5 +1,4 @@
-import { useEffect,useState } from "react";
-import {useForm} from "react-hook-form"
+
 import { useData } from "./context/data-context";
 import { useAuth } from "./context/auth-context";
 import { CreatePost } from "./services/services";
@@ -9,7 +8,7 @@ import { ToastType } from "./utils/constants";
 
 export const Modals = () =>{
     const {token,currUser} = useAuth();
-    const {editPostId,allPosts,dispatch,allUsers,postInput, setPostInput} = useData();
+    const {dispatch,allUsers,postInput, setPostInput} = useData();
     // const [postInput, setPostInput] = useState({
     //   content:"",
     //   pic:"",
@@ -80,7 +79,7 @@ try{
               style={{ aspectRatio: 1 }}
             ></div>
             :
-            <img src={`${allUsers.find((user)=>user?.username===currUser?.username)?.profile_pic}`} className=" br-full  currUser-box-left gen-btn"
+            <img alt="profilepic" src={`${allUsers.find((user)=>user?.username===currUser?.username)?.profile_pic}`} className=" br-full  currUser-box-left gen-btn"
               style={{ aspectRatio: 1 }}  />
            }
             <div className="w-full">
@@ -108,7 +107,7 @@ try{
           />
 
            {postInput.pic &&  <div className="modal-image-container">
-            <img className='modal-image' style={{width:"130px", height:"90px"}} src={postInput.pic} alt="Post image" />
+            <img className='modal-image' style={{width:"130px", height:"90px"}} src={postInput.pic} alt="Post" />
             <span className='modal-image-cancel'>{<i class="bi bi-x-circle" onClick={()=> setPostInput((prev)=> ({...prev, pic:""}))}></i>}</span>
           </div>}
 

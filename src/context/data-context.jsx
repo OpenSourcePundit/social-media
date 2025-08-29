@@ -3,14 +3,14 @@ import { ToastType } from '../utils/constants';
 import { ToastHandler } from '../utils/utils';
 
 import { GetAllPosts,GetAllUsers,GetBookmarkPosts,FollowUser,UnfollowUser} from '../services/services';
-import { useAuth } from './auth-context';
+// import { useAuth } from './auth-context';
 import { mainReducer } from '../Reducer/mainReducer';
 
 const DataContext = createContext();
 
 const DataProvider = ({children}) =>{
 
-    const {currUser,token} = useAuth();
+    // const {currUser,token} = useAuth();
     const [editPostId,setEditPostId] = useState();
     const [sortBy,setSortBy] = useState('');
     const [editpostInput, setEditPostInput] = useState({
@@ -129,10 +129,8 @@ const DataProvider = ({children}) =>{
     switch (sortBy){
         case 'Latest':
             return (sortByDate(posts));
-            break;
         case 'Trending':
             return (sortByTrending(posts));
-            break;
         default:
             return ( posts);
     }

@@ -1,6 +1,5 @@
 
 import "./rightsidebar.css"
-import { Link } from "react-router-dom"
 import { useData } from "../../../../context/data-context"
 import { useAuth } from "../../../../context/auth-context"
 
@@ -24,10 +23,7 @@ export const RightSideBar = () =>{
           <div>Who to Follow?</div>
           <div className="primary-color " type="button" data-toggle="modal" data-target="#showmore">Show More</div>
         </div>
-        {allUsers.filter((user)=>user.username!==currUser.username)?.
-        filter((user)=>!allUsers?.find((curr)=>curr?.username===currUser?.username)?.following?.map((usr)=>usr.username)?.includes(user?.username)).
-        slice(0,5).
-        map((user)=><FollowBox user1={user} key={user.username}/>)}          
+        {allUsers.filter((user)=>user.username!==currUser.username)?.filter((user)=>!allUsers?.find((curr)=>curr?.username===currUser?.username)?.following?.map((usr)=>usr.username)?.includes(user?.username)).slice(0,5).map((user)=><FollowBox user1={user} key={user.username}/>)}          
       </div>
       :
       <div className="white-bg">
@@ -35,8 +31,7 @@ export const RightSideBar = () =>{
           <div>Search Results</div>
         </div>
         {allUsers.filter((user)=>{return(user.name.toLowerCase().includes(peopleSearch.toLowerCase()) || user.username.toLowerCase().includes(peopleSearch.toLowerCase()) )}).length!==0 ?
-        allUsers.filter((user)=>{return(user.name.toLowerCase().includes(peopleSearch.toLowerCase()) || user.username.toLowerCase().includes(peopleSearch.toLowerCase()) )}).
-        map((user)=><FollowBox user1={user} key={user.username}/>):`No Results to Show`}          
+        allUsers.filter((user)=>{return(user.name.toLowerCase().includes(peopleSearch.toLowerCase()) || user.username.toLowerCase().includes(peopleSearch.toLowerCase()) )}).map((user)=><FollowBox user1={user} key={user.username}/>):`No Results to Show`}          
       </div>
       }
         
@@ -53,9 +48,7 @@ export const RightSideBar = () =>{
         
          {/* Modal body */}
         <div className="modal-body">
-        {allUsers.filter((user)=>user.username!==currUser?.username)?.
-          filter((user)=>!allUsers?.find((curr)=>curr?.username===currUser?.username)?.following?.map((usr)=>usr?.username)?.includes(user?.username))?.  
-                  map((user)=><FollowBox user1={user} key={user?.username}/>)}  
+        {allUsers.filter((user)=>user.username!==currUser?.username)?.filter((user)=>!allUsers?.find((curr)=>curr?.username===currUser?.username)?.following?.map((usr)=>usr?.username)?.includes(user?.username))?.map((user)=><FollowBox user1={user} key={user?.username}/>)}  
         </div>
         
         {/* Modal footer */}

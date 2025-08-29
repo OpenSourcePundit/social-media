@@ -1,5 +1,5 @@
 import "./post.css";
-import { React, useState,useEffect } from "react";
+import { React} from "react";
 import { useNavigate } from "react-router-dom";
 import { useData } from "../../../../context/data-context";
 import { useAuth } from "../../../../context/auth-context";
@@ -44,7 +44,7 @@ export const Post = ({ post }) => {
   };
 
   const { token, currUser } = useAuth();
-  const { allUsers, bookmarks, dispatch, setEditPostId, allPosts, editPostId,editpostInput, setEditPostInput } =
+  const { allUsers, bookmarks, dispatch, editpostInput, setEditPostInput } =
     useData();
   // console.log("state",state,"curruser",currUser)
   const fetchUserName = (username) => {
@@ -213,6 +213,7 @@ export const Post = ({ post }) => {
             }`}
             className=" br-full width-s height-s  mr-xs  gen-btn"
             style={{ aspectRatio: 1 }}
+            alt="img-tag"
             onClick={() => navigate(`/profile/${post.username}`)}
           />
         )}
@@ -335,6 +336,7 @@ export const Post = ({ post }) => {
                             (user) => user?.username === currUser?.username
                           )?.profile_pic
                         }`}
+                        alt="profile pic"
                         className=" br-full  currUser-box-left gen-btn"
                         style={{ aspectRatio: 1 }}
                       />
@@ -384,7 +386,7 @@ export const Post = ({ post }) => {
                             className="modal-image"
                             style={{ width: "130px", height: "90px" }}
                             src={editpostInput.pic}
-                            alt="Post image"
+                            alt="Post_image"
                           />
                           <span className="modal-image-cancel">
                             {

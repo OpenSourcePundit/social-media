@@ -1,24 +1,23 @@
-import {React,useEffect} from "react";
+import {React} from "react";
 import "./../../base.css";
 import "./../../utility.css";
 import "./profilepage.css";
-import { useNavigate, Link,useParams} from "react-router-dom";
-import bootstrap from "bootstrap";
+import {useParams} from "react-router-dom";
+
 
 import { Navbar } from "../components/nav";
 import { LeftSideBar } from "../components/sidecomponent/leftcomponent/leftsidebar";
 import { Post } from "../components/maincomponent/posts/post";
 import { Profile } from "../components/maincomponent/profile/profile";
 import { RightSideBar } from "../components/sidecomponent/rightcomponent/rightsidebar";
-import { Modals } from "../../allmodals";
+
 
 import { useData } from "../../context/data-context";
-import { useAuth } from "../../context/auth-context";
 
 export const ProfilePage = () =>{
-    const navigate = useNavigate();
-    const {allPosts,allUsers,getPostsData,getUsersData,fetchBookmarks,state,sortByTrending,sortByDate} = useData();
-    const {token,currUser} = useAuth();
+    // const navigate = useNavigate();
+    const {allPosts,allUsers} = useData();
+    
     const {username} = useParams();
 
     return (

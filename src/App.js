@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import {Routes,Route,useLocation,Navigate} from "react-router-dom";
 
 
-import { Loader } from './utils/utils';
 import {LandingPage} from "./pages/landingpage/landingpage.jsx";
 import {HomePage} from "./pages/homepage/homepage.jsx";
 import {Login} from "./pages/login/login";
@@ -13,7 +12,6 @@ import './base.css';
 // import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 import { useAuth } from "./context/auth-context";
-import { useData } from './context/data-context';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
