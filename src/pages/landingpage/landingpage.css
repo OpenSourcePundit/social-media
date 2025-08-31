@@ -1,3 +1,8 @@
+.landingpage-image{
+    background-image: url("../../assets/landing page animation.avif");
+  background-size: cover;
+  background-position: center;
+}
 
 @media screen and (max-width:1040px) {
     .social-circle-landing-image{
