@@ -1,5 +1,5 @@
 import "./leftsidebar.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, NavLink } from "react-router-dom";
 import { useAuth } from "../../../../context/auth-context";
 import { useData } from "../../../../context/data-context";
 
@@ -13,25 +13,25 @@ export const LeftSideBar = () => {
     <div className=" sidebar sidebar1">
       <div className="flex flex-column flex-space-between nav-wrapper bg-white rounded">
         <div className="pt-s black-color fw-semibold link-wrap">
-          <Link className="link" to="../home">
+          <NavLink className="link" to="../home">
             <span className="fw-semibold">
               <i className="bi bi-house"></i> <span className="sidebar-name">Home</span>
             </span>
-          </Link>
+          </NavLink>
         </div>
         <div className="pt-s black-color fw-semibold link-wrap">
-          <div className="link gen-btn" onClick={() => navigate(`/explore`)}>
+          <NavLink to="../explore" className="link gen-btn" >
             <span>
               <i className="bi bi-house"></i><span className="sidebar-name">Explore</span> 
             </span>
-          </div>
+          </NavLink>
         </div>
         <div className="pt-s black-color fw-semibold link-wrap">
-          <Link className="link" to="../bookmarks">
+          <NavLink className="link" to="../bookmarks">
             <span>
               <i className="bi bi-bookmark"></i><span className="sidebar-name">Bookmark</span> 
             </span>
-          </Link>
+          </NavLink>
         </div>
         <div className="pt-s black-color fw-semibold link-wrap gen-btn">
           <div

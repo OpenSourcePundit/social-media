@@ -1,6 +1,7 @@
 .container {
   margin: 0;
   padding:0;
+  background-color: var(--lynx-gray-color);
     display: grid;
     /* min-height: 100vh; */
     height: 100%;
@@ -25,7 +26,7 @@
     padding-left: 1.5rem ;
     grid-area: aside1;
     width: 100%;
-    background-color: lynx-gray-color;
+    background-color: var(--lynx-gray-color);
   }
   
   .sidebar2 {

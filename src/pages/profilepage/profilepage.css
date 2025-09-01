@@ -22,7 +22,7 @@
     .sidebar1 {
       grid-area: aside1;
       width: 100%;
-      background-color: lynx-gray-color;
+      background-color: var(--lynx-gray-color);
     }
     
     .sidebar2 {
