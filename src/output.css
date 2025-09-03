@@ -1,0 +1,62 @@
+/*! tailwindcss v4.1.12 | MIT License | https://tailwindcss.com */
+@layer properties;
+.container {
+  width: 100%;
+}
+.m-auto {
+  margin: auto;
+}
+.block {
+  display: block;
+}
+.flex {
+  display: flex;
+}
+.h-full {
+  height: 100%;
+}
+.w-auto {
+  width: auto;
+}
+.w-full {
+  width: 100%;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.resize {
+  resize: both;
+}
+.flex-row {
+  flex-direction: row;
+}
+.items-center {
+  align-items: center;
+}
+.border {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+}
+.border-none {
+  --tw-border-style: none;
+  border-style: none;
+}
+.outline-transparent {
+  outline-color: transparent;
+}
+.outline-none {
+  --tw-outline-style: none;
+  outline-style: none;
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-border-style: solid;
+    }
+  }
+}

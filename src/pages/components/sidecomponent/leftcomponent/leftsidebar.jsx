@@ -1,4 +1,5 @@
 import "./leftsidebar.css";
+import {useState}from "react";
 import { Link, useNavigate, NavLink } from "react-router-dom";
 import { useAuth } from "../../../../context/auth-context";
 import { useData } from "../../../../context/data-context";
@@ -6,34 +7,35 @@ import { useData } from "../../../../context/data-context";
 export const LeftSideBar = () => {
   const { currUser, logoutHandler } = useAuth();
   const {allUsers} = useData();
+  const [activeLink, setActiveLink] = useState("home");
 
   const navigate = useNavigate();
 
   return (
     <div className=" sidebar sidebar1">
-      <div className="flex flex-column flex-space-between nav-wrapper bg-white rounded">
-        <div className="pt-s black-color fw-semibold link-wrap">
-          <NavLink className="link" to="../home">
+      <div className="flex flex-column flex-space-around  nav-wrapper bg-white sidebar-box">
+        <div className="pt-s black-color fw-semibold link-wrap sidebar-wrapper">
+          <NavLink className="link gen-btn" to="../home">
             <span className="fw-semibold">
               <i className="bi bi-house"></i> <span className="sidebar-name">Home</span>
             </span>
           </NavLink>
         </div>
-        <div className="pt-s black-color fw-semibold link-wrap">
+        <div className="pt-s black-color fw-semibold link-wrap sidebar-wrapper">
           <NavLink to="../explore" className="link gen-btn" >
             <span>
               <i className="bi bi-house"></i><span className="sidebar-name">Explore</span> 
             </span>
           </NavLink>
         </div>
-        <div className="pt-s black-color fw-semibold link-wrap">
+        <div className="pt-s black-color fw-semibold link-wrap sidebar-wrapper">
           <NavLink className="link" to="../bookmarks">
             <span>
               <i className="bi bi-bookmark"></i><span className="sidebar-name">Bookmark</span> 
             </span>
           </NavLink>
         </div>
-        <div className="pt-s black-color fw-semibold link-wrap gen-btn">
+        <div className="pt-s black-color fw-semibold link-wrap gen-btn sidebar-wrapper">
           <div
             className="link"
             onClick={() => navigate(`/profile/${currUser.username}`)}
@@ -43,13 +45,15 @@ export const LeftSideBar = () => {
             </span>
           </div>
         </div>
-
+      
+      </div>
+      <div className="flex flex-column flex-space-around  nav-wrapper bg-white sidebar-box-2">
         <button
           type="button"
           data-toggle="modal"
           data-target="#CreateNewPostModal"
           style={{ borderRadius: "15px" }}
-          className="m-s p-s primary-bg  white-color border-none outline-transparent new-post-btn"
+          className="m-s p-s primary-bg  white-color border-none outline-transparent new-post-btn "
           
         >
           Add Post
@@ -64,6 +68,7 @@ export const LeftSideBar = () => {
           +
         </button>
       </div>
+
       <div className="flex flex-space-between white-bg w-auto  username-box">
       { allUsers.find((user)=>user.username===currUser.username)?.profile_pic ===undefined ? <div
               className="grey-bg br-full width-auto height-xs p-xs mr-xs currUser-box gen-btn"
@@ -71,7 +76,7 @@ export const LeftSideBar = () => {
             ></div>
             :
             <img src={`${allUsers.find((user)=>user.username===currUser.username).profile_pic}`} className=" br-full  currUser-box-left gen-btn"
-              style={{ aspectRatio: 1 }} data-dismiss="modal" onClick={()=>navigate(`/profile/${currUser.username}`)} />
+              style={{ aspectRatio: 1 }} alt="" data-dismiss="modal" onClick={()=>navigate(`/profile/${currUser.username}`)} />
            }
         <div className="flex">
           <div className="grey-bg br-full width-xl height-xl"></div>

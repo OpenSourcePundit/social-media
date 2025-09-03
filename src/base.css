@@ -1,15 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
 
 :root{
-    --primary-color: #FF3B30;
-    --secondary-color: #FFF6EA;
+    --primary-color: #ffe030;
+    --secondary-color: #20c80a;
+    --primary-text-color: #000000;
+    --secondary-text-color: #ffffff;
     --action-color: #3B82F6;
     --grey-color: #9a9a9a;
     --black-color: #282828;
     --white-color: #fff;
     --lynx-white-color: #f7f7f7;
     --violet-color: #5348C7;
-    --lynx-gray-color: #9a9a9a;
+    --lynx-gray-color: #ccc8c8;
     --font: 'Open Sans', sans-serif;
     --xxl-size: 4rem;
     --xl-size: 2.5rem;
