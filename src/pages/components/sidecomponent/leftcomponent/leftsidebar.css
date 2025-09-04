@@ -122,4 +122,31 @@
     
   }
 
-  
+  @media screen and (max-width:768px) {
+ .sidebar1{
+      padding-left: 0;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      z-index: 20;      
+      align-items: center;
+      justify-content:space-around;
+      display: flex;
+      flex-direction: row;
+    }
+    .sidebar-box{
+        border-radius: 0px;
+        height: 56px;
+    }
+    .sidebar-box-2{
+border-radius: 0px;
+width: 20%;
+        height: 56px;
+
+    }
+
+    .new-post-btn-2{
+      margin: 0;
+    }
+
+  }

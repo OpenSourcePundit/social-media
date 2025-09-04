@@ -5,9 +5,9 @@ export const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <nav className="white-bg">
-      <div className="p-s pl-l txt-m  ">
-        <h3>
+    <nav className="white-bg h-[172px]">
+      <div className="p-s pl-l txt-m">
+        <h3 className="m-0 leading-none">
           <span onClick={() => navigate("/home")} className="primary-color gen-btn">
             Social
           </span>

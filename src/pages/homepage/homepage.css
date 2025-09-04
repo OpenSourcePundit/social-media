@@ -83,26 +83,13 @@
     main{
       width: 100%;      
     }
-    .sidebar1{
-      padding-left: 0;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      z-index: 20;      
-      align-items: center;
-      justify-content:space-around
-    }
-    .left-side-bar-wrapper {
-      flex-direction: row;
-    }
+   
     .nav-wrapper{
       flex-direction: row !important;
       align-items: center;
       width: 100%;
     }
-    .new-post-btn-2{
-      width: 10%;
-    }
+    
     .username-box{
       display: none;
     }
