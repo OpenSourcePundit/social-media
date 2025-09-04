@@ -407,6 +407,7 @@ h6 {
 
 .lynx-gray-color {
   color: var(--lynx-gray-color);
+  
 }
 
 .grey-color {
@@ -415,6 +416,11 @@ h6 {
 
 .action-color {
   color: var(--action-color);
+}
+.color-gradient {
+  background: linear-gradient(90deg, #c2f140 0%, #ebef0f 100%);
+  /* -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
 }
 
 .primary-bg {
