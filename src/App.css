@@ -7,6 +7,7 @@
   height: 100vh;
   width: 100%;
   font-size: 1rem;
+  background-color: var(--lynx-gray-color);
 }
 
 

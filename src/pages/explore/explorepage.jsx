@@ -65,11 +65,14 @@ useEffect(() =>{getPostsData();getUsersData();fetchBookmarks(token)},[]);
             </div>
           </div>
         </div>
-        {allPosts.filter((post)=>{return(post.username.toLowerCase().includes(postSearch.toLowerCase()) || post.username.toLowerCase().includes(postSearch.toLowerCase()))}).length !==0 ?
+
+        <div className="allpost-wrapper" id="explore-post-wrapper">
+          {allPosts.filter((post)=>{return(post.username.toLowerCase().includes(postSearch.toLowerCase()) || post.username.toLowerCase().includes(postSearch.toLowerCase()))}).length !==0 ?
         
         
         sortPost(allPosts.filter((post)=>{return(post.username.toLowerCase().includes(postSearch.toLowerCase()) || post.username.toLowerCase().includes(postSearch.toLowerCase()))}),sortBy).
         map((post)=>{return(<Post post={post} key={post._id}/>)}): `No posts to Show`}
+        </div>
        
       </main>
        {<RightSideBar/>}

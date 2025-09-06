@@ -222,7 +222,7 @@ export const Post = ({ post }) => {
             <div className="flex flex-row post-user-details">
               <p className="fw-semibold">{fetchUserName(post?.username)}</p>
 
-              <p className="grey-color pl-xs">
+              <p className="grey-color pl-xs post-detail-text">
                 @{post?.username} <span className="pl-xs">•</span>
                 <span className="pl-xs ">
                   {new Intl.DateTimeFormat("en-GB", {
