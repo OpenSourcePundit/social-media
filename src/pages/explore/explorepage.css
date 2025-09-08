@@ -35,6 +35,11 @@
   /* background-color: blanchedalmond; */
     grid-area: main;
     padding-left: .5rem;
+    height: 100vh;
+  }
+  .allpost-wrapper{
+    height:auto;
+    max-height: 900px;
   }
 
 

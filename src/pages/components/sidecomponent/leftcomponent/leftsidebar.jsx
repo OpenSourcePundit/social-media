@@ -10,7 +10,6 @@ export const LeftSideBar = () => {
   const [activeLink, setActiveLink] = useState("home");
 
   const navigate = useNavigate();
-
   return (
     <div className=" sidebar sidebar1">
       <div className="flex flex-column flex-space-around  nav-wrapper bg-white sidebar-box">

@@ -3,8 +3,9 @@ import "./../../base.css";
 import "./../../utility.css";
 import {useNavigate} from 'react-router-dom'
 import { useAuth } from "../../context/auth-context";
-
+import authImage from "../../assets/Untitled.avif";
 import {useForm} from 'react-hook-form';
+import "./signup.css";
 
 export function SignUp(){
   const navigate = useNavigate();
@@ -20,47 +21,49 @@ export function SignUp(){
   }
 
     return(
-      <div className="flex flex-column flex-center h-full w-full">
+      <div className="flex flex-column flex-center h-full w-full  ">
       <h2 className="fw-black mb-m gen-btn " onClick={()=>{navigate("/")}}>
         <span className="primary-color">Social</span> Circle
       </h2>
-      <div className="white-bg br-m p-xxl pt-l pb-l" style={{ width: '30rem' }}>
-        <h3 className="txt-center mb-s txt-l">Signup</h3>
+      <div className="auth-page-wrapper w-full h-full d-flex">
+        <div className="landing-img-wrapper w-50 flex flex-column flex-left">
+          <img src={authImage} alt="img"  />
+
+        </div>
+        <div className="br-m p-l flex  flex-column flex-center auth-tile-wrapper" >
+        <h3 className="txt-center mb-s txt-m">Signup</h3>
 
       <form onSubmit={handleSubmit(submitHandler)} noValidate>
         <div className="flex flex-column">
-          <label htmlFor="name" className="txt-s">Full Name</label>
           <input
             type="text"
             name="name"
             id="name"
-            className="p-xs txt-s black-color br-s mb-s"
+            className="p-xs txt-s black-color br-s mb-s primary-bg"
             style={{ border: '1px solid grey' }}
             placeholder="Name" {...register("name",{required:{value:true,message:"Name is Required"}})}
           />
           <p className="error-msg">{errors.name?.message}</p>
         </div>
         <div className="flex flex-column">
-          <label htmlFor="username">Username</label>
           <input
             type="text"
             name="username"
             id="username"
-            className="p-xs txt-s black-color br-s mb-s"
+            className="p-xs txt-s black-color br-s mb-s primary-bg"
             style={{ border: '1px solid grey' }}
             placeholder="Username" {...register("username",{required:{value:true,message:"Username is Required"}})}
           />
            <p className="error-msg">{errors.username?.message}</p>
         </div>
         <div className="flex flex-column">
-          <label htmlFor="email">Email Address</label>
           <input
             type="text"
             name="email"
             id="email"
-            className="p-xs txt-s black-color br-s mb-s"
+            className="p-xs txt-s black-color br-s mb-s primary-bg"
             style={{ border: '1px solid grey' }}
-            placeholder="shashank@neog.camp" {...register("email",{pattern: {
+            placeholder="Email" {...register("email",{pattern: {
               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
               message: "invalid email address"
             }})}
@@ -68,40 +71,31 @@ export function SignUp(){
            <p className="error-msg">{errors.email?.message}</p>
         </div>
         <div className="flex flex-column">
-          <label htmlFor="password">Password</label>
           <input
             type="password"
             name="password"
             id="password"
-            className="p-xs txt-s black-color br-s flex mb-s items-center"
+            className="p-xs txt-s black-color br-s flex mb-s items-center primary-bg"
             style={{ border: '1px solid grey' }}
-            placeholder="************" {...register("password")}
+            placeholder="Password" {...register("password")}
           />
            <p className="error-msg">{errors.password?.message}</p>
         </div>
         <div className="flex flex-column">
-          <label htmlFor="confirmpassword">Confirm Password</label>
           <input
             type="password"
             name="confirmpassword"
             id="confirmpassword"
-            className="p-xs txt-s black-color br-s mb-s flex items-center"
+            className="p-xs txt-s black-color br-s mb-s flex items-center primary-bg"
             style={{ border: '1px solid grey' }}
-            placeholder="************" {...register("confirmpassword",  { 
+            placeholder="Confirm Password" {...register("confirmpassword",  { 
               required: true,
               validate: (value) => value === watch("password") || "Passwords do not match"
             })}
           />
            <p className="error-msg">{errors.confirmpassword?.message}</p>
         </div>
-        <div className="flex flex-align-center flex-space-between mt-m mb-m">
-          <div className="txt-s flex flex-align-center">
-            <input className="p-s txt-cursor" type="checkbox" name="accept-terms" id="" />
-            <label className="pl-xs txt-cursor" htmlFor="accept-terms">
-              I accept all Terms &amp; Conditions
-            </label>
-          </div>
-        </div>
+        
        
         <button type="submit" className="w-full primary-bg white-color p-s outline-transparent border-none pt-xs pb-xs txt-s">
           Create New Account
@@ -113,6 +107,7 @@ export function SignUp(){
         <button className="pl-xs primary-bg white-color p-s outline-transparent border-none pt-xs pb-xs txt-s " onClick={()=>loginHandler("adarshbalika","1")}>
               Login As Test User
             </button>
+      </div>
       </div>
       
     </div>
