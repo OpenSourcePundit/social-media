@@ -384,6 +384,9 @@ h6 {
 .primary-color {
   color: var(--primary-color);
 }
+.dark-custom-bg-color {
+  background-color: var(--dark-custom-bg-color);
+}
 
 .secondary-color {
   color: var(--secondary-color);

@@ -13,6 +13,7 @@ const AuthProvider = ({children}) =>{
     const localStorageToken = JSON?.parse(localStorage?.getItem('loginItems'));
     const [token, setToken] = useState(localStorageToken?.token);
     const [currUser, setCurrUser] = useState(localStorageToken?.user);
+    
 
     const loginHandler = async (username, password) => {
       try{
