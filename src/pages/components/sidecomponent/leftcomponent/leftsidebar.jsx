@@ -12,7 +12,7 @@ export const LeftSideBar = () => {
   const navigate = useNavigate();
   return (
     <div className=" sidebar sidebar1">
-      <div className="flex flex-column flex-space-around  nav-wrapper bg-white sidebar-box">
+      <div className="flex flex-column flex-space-around  nav-wrapper lynx-grey-bg sidebar-box">
         <div className="pt-s black-color fw-semibold link-wrap sidebar-wrapper">
           <NavLink className="link gen-btn" to="../home">
             <span className="fw-semibold">
@@ -34,19 +34,19 @@ export const LeftSideBar = () => {
             </span>
           </NavLink>
         </div>
-        <div className="pt-s black-color fw-semibold link-wrap gen-btn sidebar-wrapper">
-          <div
-            className="link"
+        <div className="pt-s black-color fw-semibold link-wrap sidebar-wrapper">
+          <NavLink
+            className="link gen-btn"
             onClick={() => navigate(`/profile/${currUser.username}`)}
           >
             <span>
               <i className="bi bi-person"></i><span className="sidebar-name">Profile</span> 
             </span>
-          </div>
+          </NavLink>
         </div>
       
       </div>
-      <div className="flex flex-column flex-space-around  nav-wrapper bg-white sidebar-box-2">
+      <div className="flex flex-column flex-space-around  nav-wrapper lynx-grey-bg sidebar-box-2">
         <button
           type="button"
           data-toggle="modal"

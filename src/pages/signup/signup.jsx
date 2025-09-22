@@ -5,6 +5,7 @@ import {useNavigate} from 'react-router-dom'
 import { useAuth } from "../../context/auth-context";
 import authImage from "../../assets/Untitled.avif";
 import {useForm} from 'react-hook-form';
+import { Navbar } from "../components/nav";
 import "./signup.css";
 
 export function SignUp(){
@@ -21,10 +22,8 @@ export function SignUp(){
   }
 
     return(
-      <div className="flex flex-column flex-center h-full w-full  ">
-      <h2 className="fw-black mb-m gen-btn " onClick={()=>{navigate("/")}}>
-        <span className="primary-color">Social</span> Circle
-      </h2>
+      <div className="flex flex-column flex-center h-screen w-screen  ">
+      <Navbar />
       <div className="auth-page-wrapper w-full h-full d-flex">
         <div className="landing-img-wrapper w-50 flex flex-column flex-left">
           <img src={authImage} alt="img"  />
